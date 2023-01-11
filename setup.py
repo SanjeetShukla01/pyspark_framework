@@ -19,17 +19,13 @@ setup(
     license='CC BY-NC 4.0',
     python_requires='>=3.7',
     include_package_data=False,
-    install_requires=[
-         "Package_1>=version",
-         "Package_2>=version",
-    ],
     entry_points={
         "console_scripts": [
             "app=app:app",
         ],
     },
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest==4.4.1'],
+    # setup_requires=['pytest-runner'],
+    # tests_require=['pytest==4.4.1'],
     test_suite='tests',
     project_urls={
         "Bug Reports": "https://github.com/SanjeetShukla01/pyspark_framework/issues",
