@@ -15,3 +15,22 @@ def test_log_path():
     print(log_path)
     absolute_path = os.path.abspath(log_path)
     print(absolute_path)
+
+
+def test_get_old_logs():
+    """
+    TODO: To complete this function
+    :return:
+    """
+
+
+def test_get_log_file_name():
+    """
+    TODO: To complete this function
+    :return:
+    """
+
+    logger: Logger = Logger("test")
+    path = os.path.abspath(logger.LOG_DIRECTORY)
+    # logger.get_old_logs()
+    logger.__get_file_names(logger, path)

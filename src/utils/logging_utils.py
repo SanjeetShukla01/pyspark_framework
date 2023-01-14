@@ -46,7 +46,7 @@ class Logger(SingletonDoubleChecked):
         self.FILE_NAME = datetime.now().strftime('log_%d-%m-%Y-%H:%M:%S.log')
         self.LOG_FILE = self.LOG_DIRECTORY + self.FILE_NAME
         self.logger_name = logger_name
-        self.__clean_old_logs()
+        # self.__clean_old_logs()
 
     def get_console_handler(self) -> logging.StreamHandler:
         """
@@ -81,16 +81,15 @@ class Logger(SingletonDoubleChecked):
     def __clean_old_logs(self):
         for name in self.__get_old_logs():
             path = os.path.join(self.LOG_DIRECTORY, name)
-            self.__delete_files(path)
+            self.__delete_files(self, path)
 
     def __get_old_logs(self):
-        logs = [name for name in self.__get_file_names(self.LOG_DIRECTORY)]
+        logs = [name for name in self.__get_file_names()]
         logs.sort(reverse=True)
         return logs[self.LOGS_COUNT:]
 
-    @staticmethod
-    def __get_file_names(self, path):
-        return [item.name for item in pathlib.Path(path).glob("*") if item.is_file()]
+    def __get_file_names(self):
+        return [item.name for item in pathlib.Path(self.LOG_DIRECTORY).glob("*") if item.is_file()]
 
     @staticmethod
     def __delete_files(self, path):
@@ -98,6 +97,7 @@ class Logger(SingletonDoubleChecked):
             os.remove(path)
         except Exception as ex:
             print("Exception deleting log file" + str(ex))
+
 
 
 class PackagePathFilter(logging.Filter):
@@ -115,9 +115,7 @@ class PackagePathFilter(logging.Filter):
 
 
 if __name__ == '__main__':
-    loggers = Logger("test")
-    log_path = loggers.LOG_DIRECTORY
-    print(log_path)
-    absolute_path = os.path.abspath(log_path)
-    print(absolute_path)
+    logger: Logger = Logger("test")
+    path = os.path.abspath(logger.LOG_DIRECTORY)
+
 
