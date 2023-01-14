@@ -99,9 +99,16 @@ class Logger(SingletonDoubleChecked):
             print("Exception deleting log file" + str(ex))
 
 
-
 class PackagePathFilter(logging.Filter):
+    """
+    This class is used to add relative path to the logs
+    """
     def filter(self, record: logging.LogRecord) -> bool:
+        """
+        this method is used to filter log records and make the path relative in log records
+        :param record:          log record
+        :return:                returns boolean
+        """
         pathname = record.pathname
         record.relativepath = None
         abs_sys_path = map(os.path.abspath, sys.path)

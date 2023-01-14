@@ -14,7 +14,7 @@ from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
 
 
-class AaHelper:
+class AirAHelper:
     def __init__(self, spark):
         self.spark = spark
 
