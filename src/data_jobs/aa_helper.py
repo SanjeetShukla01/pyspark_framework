@@ -6,7 +6,7 @@
 # -----------------------------------------------------------------------
 import urllib.request
 
-from pyspark.sql.functions import explode, col
+from pyspark.sql.functions import explode, col, to_utc_timestamp, current_timestamp
 
 from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
@@ -38,7 +38,11 @@ class AaHelper:
                                                                                   "results.user.username",
                                                                                   "results.user.dob"
                                                                                   )\
-                .withColumn(Columns.CURRENT_TIME)
+                .withColumn(Columns.CURRENT_TIME, to_utc_timestamp(current_timestamp(), 'Asia/Kuala_lumpur'))
+            final_df.coalesce(1).write.format('csv').mode('overwrite').option('header', True).option('sep', ',')\
+                .save(landing_path)
+        except Exception as exp:
+            self.logger.error(f"error in reading api data {str(exp)}")
 
 
 

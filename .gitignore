@@ -2,4 +2,4 @@ __pycache__/
 .idea/
 __pypackages__/
 venv/
-
+logs/
