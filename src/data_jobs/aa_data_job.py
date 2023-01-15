@@ -11,6 +11,7 @@ from src.app.job import Job
 from src.config import etl_config
 from src.data_jobs.aa_helper import AirAHelper
 from src.utils import spark_utils, config_utils
+from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
 
 
@@ -26,7 +27,7 @@ class AirADataJob(Job):
     random_user_landing_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
 
     superman_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
-    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
+    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
 
     url = configutil.get_config("IO_CONFIGS", "AA_RANDOM_USER_URL")
     # "https://randomuser.me/api/0.8/?results=100"
@@ -50,8 +51,8 @@ class AirADataJob(Job):
 
             # Read data from random user API.
             self.logger.info(f"Reading random user data from API")
-            self.aa_helper.ingest_api_data(self.url, self.random_user_target_path)
-            self.logger.info(f"dataset dumped on {self.random_user_target_path}")
+            self.aa_helper.ingest_api_data(self.url, self.random_user_landing_path)
+            self.logger.info(f"dataset dumped on {self.random_user_landing_path}")
 
         except Exception as exp:
             self.logger.error(f"An error occurred while running the pipeline {str(exp)}")
@@ -99,6 +100,7 @@ class AirADataJob(Job):
         self.logger.info(f"processing api data")
         try:
             df = self.spark.read.format("csv").option("header", "true").load(input_path + '/input_api_csv')
+            df1 = df.select(Columns.GENDER, )
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")
             raise

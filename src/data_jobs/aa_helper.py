@@ -46,7 +46,7 @@ class AirAHelper:
                         "results.user.registered",
                         "results.user.username",
                         "results.user.dob")\
-                .withColumn(Columns.CURRENT_TS.name, current_timestamp())
+                .withColumn(Columns.CURRENT_TS, current_timestamp())
 
             # TODO: Change current_ts column to MYT timezone
             # TODO: Implement column constants
