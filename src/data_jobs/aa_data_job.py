@@ -100,7 +100,7 @@ class AirADataJob(Job):
         self.logger.info(f"processing api data")
         try:
             df = self.spark.read.format("csv").option("header", "true").load(input_path + '/input_api_csv')
-            df1 = df.select(Columns.GENDER, )
+            # df1 = df.select(Columns.GENDER, )
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")
             raise
