@@ -4,9 +4,7 @@
 # Created Date:     13/01/23 6:09 pm
 # File:             aa_helper.py.py
 # -----------------------------------------------------------------------
-import os.path
 import urllib.request
-import urllib.parse
 
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import explode, col, to_utc_timestamp, current_timestamp
@@ -20,6 +18,7 @@ class AirAHelper:
         self.spark = spark
 
     logger = Logger(__name__).get_logger()
+    logger.info("inside air helper")
 
     def ingest_api_data(self, url: str, landing_path: str) -> DataFrame:
         """
@@ -28,10 +27,13 @@ class AirAHelper:
         :param landing_path:    path on local system to store data
         :return Dataframe:      returns spark dataframe of data ingested from api
         """
+        self.logger.info("reading random user data")
         try:
-            json_api_data = urllib.request.urlopen(url).read().decode('utf-8')
-            rdd = self.spark.sparkContext.parallelize([json_api_data])
+            api_data = urllib.request.urlopen(url).read().decode('utf-8')
+            rdd = self.spark.sparkContext.parallelize([api_data])
             df = self.spark.read.json(rdd)
+
+            self.logger.info("selected columns from read dataframe")
 
             final_df = df.select(explode(col("results")).alias("results"))\
                 .select("results.user.email",
@@ -43,8 +45,12 @@ class AirAHelper:
                         "results.user.registered",
                         "results.user.username",
                         "results.user.dob")\
-                .withColumn(Columns.CURRENT_TIME, to_utc_timestamp(current_timestamp(), 'Asia/Kuala_lumpur'))
+                .withColumn("CURRENT_TS", current_timestamp())
 
+            # TODO: Change current_ts column to MYT timezone
+            # TODO: Implement column constants
+
+            self.logger.info("creating final df")
             final_df.coalesce(1).write.format('csv').mode('overwrite')\
                 .option('header', True).option('sep', ',')\
                 .save(landing_path)
@@ -63,7 +69,7 @@ class AirAHelper:
         :return:                    Returns a spark dataframe
         """
         self.logger.info(f"reading data from {url}")
-        response = urllib.request.urlopen(urllib.parse.quote(url))
+        response = urllib.request.urlopen(url)
         js = response.read()
         file_name = landing_path + "/superman.json"
         os.makedirs(os.path.dirname(file_name), exist_ok=True)

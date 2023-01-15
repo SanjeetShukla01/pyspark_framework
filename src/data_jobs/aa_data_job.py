@@ -37,7 +37,7 @@ class AirADataJob(Job):
     # TODO: Get rid of config file and use Enum instead.
     # TODO: Use classes to store and return data of custom type
 
-    def run(self) -> None:
+    def run(self):
         try:
             config = getattr(etl_config, self.job_name)
 
@@ -73,7 +73,7 @@ class AirADataJob(Job):
         sorted_event_list = sorted(event_list, key=lambda x: x[0])
         return sorted_event_list
 
-    def process_json(self, json: str, path: str):
+    def process_json(self, json: list, path: str):
         """
         :param json:        Json data to be processed
         :param path:        Path of the json file
@@ -111,7 +111,10 @@ if __name__ == "__main__":
     print(air_data_job.url)
     print(air_data_job.json_url)
     print(air_data_job.superman_landing_path)
-    aa_helper.read_json_from_web(air_data_job.json_url, air_data_job.superman_landing_path)
+    # aa_helper.read_json_from_web(air_data_job.json_url, air_data_job.superman_landing_path)
+    # json_list = air_data_job.flatten_json(air_data_job.superman_landing_path)
+    # print(air_data_job.process_json(json_list, air_data_job.superman_target_path))
+    aa_helper.ingest_api_data(air_data_job.url, air_data_job.random_user_target_path)
 
 
 

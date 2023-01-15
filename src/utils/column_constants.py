@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class Columns(Enum):
-    CURRENT_TIME = "current_time",
+    CURRENT_TS = "current_ts",
     REGION = "region",
     HAPPINESS_RANK = "happiness_rank",
     HAPPINESS_SCORE = "happiness_score",
