@@ -7,15 +7,19 @@
 import os
 import re
 
+from pyspark import F
+from pyspark.sql.functions import split
+
 from src.app.job import Job
 from src.config import etl_config
 from src.data_jobs.aa_helper import AirAHelper
 from src.utils import spark_utils, config_utils
+from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
 
 
 class AirADataJob(Job):
-    def __int__(self, job_name):
+    def __init__(self, job_name):
         self.job_name = job_name
         self.spark = spark_utils.SparkUtils().get_spark_session("aa_data_job")
         self.aa_helper = AirAHelper(self.spark)
@@ -26,7 +30,7 @@ class AirADataJob(Job):
     random_user_landing_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
 
     superman_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
-    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
+    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
 
     url = configutil.get_config("IO_CONFIGS", "AA_RANDOM_USER_URL")
     # "https://randomuser.me/api/0.8/?results=100"
@@ -37,7 +41,7 @@ class AirADataJob(Job):
     # TODO: Get rid of config file and use Enum instead.
     # TODO: Use classes to store and return data of custom type
 
-    def run(self) -> None:
+    def run(self):
         try:
             config = getattr(etl_config, self.job_name)
 
@@ -50,8 +54,11 @@ class AirADataJob(Job):
 
             # Read data from random user API.
             self.logger.info(f"Reading random user data from API")
-            self.aa_helper.ingest_api_data(self.url, self.random_user_target_path)
-            self.logger.info(f"dataset dumped on {self.random_user_target_path}")
+            self.aa_helper.ingest_api_data(self.url, self.random_user_landing_path)
+            self.logger.info(f"dataset dumped on {self.random_user_landing_path}")
+
+            self.process_api_data(self.random_user_landing_path, self.random_user_target_path)
+            self.logger.info(f"placed process data at {self.random_user_target_path}")
 
         except Exception as exp:
             self.logger.error(f"An error occurred while running the pipeline {str(exp)}")
@@ -73,7 +80,7 @@ class AirADataJob(Job):
         sorted_event_list = sorted(event_list, key=lambda x: x[0])
         return sorted_event_list
 
-    def process_json(self, json: str, path: str):
+    def process_json(self, json: list, path: str):
         """
         :param json:        Json data to be processed
         :param path:        Path of the json file
@@ -99,24 +106,16 @@ class AirADataJob(Job):
         self.logger.info(f"processing api data")
         try:
             df = self.spark.read.format("csv").option("header", "true").load(input_path + '/input_api_csv')
+            df1 = df.select(Columns.GENDER, split("email", "@")[1].alias("email_provider"), "username")
+            df2 = df1.groupby("gender", "email_provider").agg(F.count("username"))
+            df2.coalesce(1).write().format('csv').mode('overwrite').option('header', True).option('sep', ',')\
+                .save(output_path + '/assessment_2_total_count')
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")
             raise
 
 
-if __name__ == "__main__":
-    spark = spark_utils.SparkUtils().get_spark_session("aa_data_job")
-    aa_helper: AirAHelper = AirAHelper(spark)
-    air_data_job = AirADataJob()
-    print(air_data_job.url)
-    print(air_data_job.json_url)
-    print(air_data_job.superman_landing_path)
-    aa_helper.read_json_from_web(air_data_job.json_url, air_data_job.superman_landing_path)
+# if __name__ == "__main__":
+#     air_data_job: AirADataJob = AirADataJob("aa_data_job")
+#     air_data_job.run()
 
-
-
-
-
-    # self.logger.info(f"superman.json file stored at {self.superman_landing_path}")
-    # json_list = self.flatten_json(self.superman_landing_path)
-    # self.process_json(json_list, self.superman_target_path)
