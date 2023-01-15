@@ -7,6 +7,9 @@
 import os
 import re
 
+from pyspark import F
+from pyspark.sql.functions import split
+
 from src.app.job import Job
 from src.config import etl_config
 from src.data_jobs.aa_helper import AirAHelper
@@ -54,6 +57,9 @@ class AirADataJob(Job):
             self.aa_helper.ingest_api_data(self.url, self.random_user_landing_path)
             self.logger.info(f"dataset dumped on {self.random_user_landing_path}")
 
+            self.process_api_data(self.random_user_landing_path, self.random_user_target_path)
+            self.logger.info(f"placed process data at {self.random_user_target_path}")
+
         except Exception as exp:
             self.logger.error(f"An error occurred while running the pipeline {str(exp)}")
             raise
@@ -100,13 +106,16 @@ class AirADataJob(Job):
         self.logger.info(f"processing api data")
         try:
             df = self.spark.read.format("csv").option("header", "true").load(input_path + '/input_api_csv')
-            # df1 = df.select(Columns.GENDER, )
+            df1 = df.select(Columns.GENDER, split("email", "@")[1].alias("email_provider"), "username")
+            df2 = df1.groupby("gender", "email_provider").agg(F.count("username"))
+            df2.coalesce(1).write().format('csv').mode('overwrite').option('header', True).option('sep', ',')\
+                .save(output_path + '/assessment_2_total_count')
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")
             raise
 
 
-if __name__ == "__main__":
-    air_data_job: AirADataJob = AirADataJob("aa_data_job")
-    air_data_job.run()
+# if __name__ == "__main__":
+#     air_data_job: AirADataJob = AirADataJob("aa_data_job")
+#     air_data_job.run()
 
