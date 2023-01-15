@@ -14,7 +14,7 @@ class ConfigUtil:
     This class provides access to pipeline configs stored in pipeline.cfg
     """
 
-    config_path = "config/pipeline.cfg"
+    config_path = "../config/pipeline.cfg"
     logger = Logger(__name__).get_logger()
 
     def get_config(self, section: str, config_name: str) -> str:

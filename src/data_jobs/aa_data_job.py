@@ -104,5 +104,19 @@ class AirADataJob(Job):
             raise
 
 
+if __name__ == "__main__":
+    spark = spark_utils.SparkUtils().get_spark_session("aa_data_job")
+    aa_helper: AirAHelper = AirAHelper(spark)
+    air_data_job = AirADataJob()
+    print(air_data_job.url)
+    print(air_data_job.json_url)
+    print(air_data_job.superman_landing_path)
+    aa_helper.read_json_from_web(air_data_job.json_url, air_data_job.superman_landing_path)
 
 
+
+
+
+    # self.logger.info(f"superman.json file stored at {self.superman_landing_path}")
+    # json_list = self.flatten_json(self.superman_landing_path)
+    # self.process_json(json_list, self.superman_target_path)

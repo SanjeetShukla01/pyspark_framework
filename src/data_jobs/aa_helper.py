@@ -6,6 +6,7 @@
 # -----------------------------------------------------------------------
 import os.path
 import urllib.request
+import urllib.parse
 
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import explode, col, to_utc_timestamp, current_timestamp
@@ -62,7 +63,7 @@ class AirAHelper:
         :return:                    Returns a spark dataframe
         """
         self.logger.info(f"reading data from {url}")
-        response = urllib.request.urlopen(url)
+        response = urllib.request.urlopen(urllib.parse.quote(url))
         js = response.read()
         file_name = landing_path + "/superman.json"
         os.makedirs(os.path.dirname(file_name), exist_ok=True)
