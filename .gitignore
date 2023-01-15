@@ -3,3 +3,4 @@ __pycache__/
 __pypackages__/
 venv/
 logs/
+data/target_data/
