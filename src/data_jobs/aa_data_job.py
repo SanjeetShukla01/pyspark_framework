@@ -15,7 +15,7 @@ from src.utils.logging_utils import Logger
 
 
 class AirADataJob(Job):
-    def __int__(self, job_name):
+    def __init__(self, job_name):
         self.job_name = job_name
         self.spark = spark_utils.SparkUtils().get_spark_session("aa_data_job")
         self.aa_helper = AirAHelper(self.spark)
@@ -105,21 +105,6 @@ class AirADataJob(Job):
 
 
 if __name__ == "__main__":
-    spark = spark_utils.SparkUtils().get_spark_session("aa_data_job")
-    aa_helper: AirAHelper = AirAHelper(spark)
-    air_data_job = AirADataJob()
-    print(air_data_job.url)
-    print(air_data_job.json_url)
-    print(air_data_job.superman_landing_path)
-    # aa_helper.read_json_from_web(air_data_job.json_url, air_data_job.superman_landing_path)
-    # json_list = air_data_job.flatten_json(air_data_job.superman_landing_path)
-    # print(air_data_job.process_json(json_list, air_data_job.superman_target_path))
-    aa_helper.ingest_api_data(air_data_job.url, air_data_job.random_user_target_path)
+    air_data_job: AirADataJob = AirADataJob("aa_data_job")
+    air_data_job.run()
 
-
-
-
-
-    # self.logger.info(f"superman.json file stored at {self.superman_landing_path}")
-    # json_list = self.flatten_json(self.superman_landing_path)
-    # self.process_json(json_list, self.superman_target_path)

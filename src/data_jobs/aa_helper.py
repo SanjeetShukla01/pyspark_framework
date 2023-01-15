@@ -4,6 +4,7 @@
 # Created Date:     13/01/23 6:09 pm
 # File:             aa_helper.py.py
 # -----------------------------------------------------------------------
+import os
 import urllib.request
 
 from pyspark.sql import DataFrame
@@ -45,7 +46,7 @@ class AirAHelper:
                         "results.user.registered",
                         "results.user.username",
                         "results.user.dob")\
-                .withColumn("CURRENT_TS", current_timestamp())
+                .withColumn(Columns.CURRENT_TS.name, current_timestamp())
 
             # TODO: Change current_ts column to MYT timezone
             # TODO: Implement column constants
