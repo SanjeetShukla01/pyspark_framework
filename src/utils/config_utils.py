@@ -13,8 +13,9 @@ class ConfigUtil:
     """
     This class provides access to pipeline configs stored in pipeline.cfg
     """
+    def __init__(self, config_path: str = "../config/pipeline.cfg"):
+        self.cfg_path = config_path
 
-    config_path = "../config/pipeline.cfg"
     logger = Logger(__name__).get_logger()
 
     def get_config(self, section: str, config_name: str) -> str:
@@ -26,7 +27,7 @@ class ConfigUtil:
         """
         try:
             config = configparser.ConfigParser()
-            config.read(self.config_path)
+            config.read(self.cfg_path)
             return config.get(section, config_name)
         except IOError as exp:
             self.logger.error(f"error reading config file {str(exp)}")
