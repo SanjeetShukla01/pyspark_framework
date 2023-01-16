@@ -26,6 +26,7 @@ class AirADataJob(Job):
 
     logger = Logger(__name__).get_logger()
     configutil = config_utils.ConfigUtil()
+    print(configutil.cfg_path)
     superman_landing_path = configutil.get_config("IO_CONFIGS", "AA_LANDING_PATH")
     random_user_landing_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
 

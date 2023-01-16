@@ -16,7 +16,7 @@ from src.utils.table_schema import happiness_data_schema
 class HappinessIndex(Job):
     def __init__(self, job_name):
         self.job_name = job_name
-        self.spark = spark_utils.SparkUtils().get_spark_session("aa_data_job")
+        self.spark = spark_utils.SparkUtils().get_spark_session("happiness_index_data_job")
 
     logger = Logger(__name__).get_logger()
     configutil = config_utils.ConfigUtil()

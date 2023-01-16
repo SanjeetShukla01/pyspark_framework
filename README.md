@@ -8,4 +8,10 @@ I am using following approach here:
 1. config file with extension .cfg/ini read by parsed by configparser in config_utils.py 
 2. Constants.py containing dictionary --  This has been replaced by Enum 
 3. Constants.py containing Enum class
-4. 
+
+
+Setting up current project to the PYTHONPATH
+```commandline
+export PYTHONPATH=$PYTHONPATH:/home/archana/Desktop/git-repo/pyspark_framework
+```
+
