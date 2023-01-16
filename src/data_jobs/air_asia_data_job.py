@@ -2,17 +2,17 @@
 # ------------------------------------------------------------------------
 # Created By  :     'Sanjeet Shukla'
 # Created Date:     12/01/23 6:07 am
-# File:             aa_data_job.py
+# File:             air_asia_data_job.py
 # -----------------------------------------------------------------------
 import os
 import re
 
 from pyspark import F
-from pyspark.sql.functions import split
+from pyspark.sql.functions import split, count
 
 from src.app.job import Job
 from src.config import etl_config
-from src.data_jobs.aa_helper import AirAHelper
+from src.data_jobs.air_asia_helper import AirAHelper
 from src.utils import spark_utils, config_utils
 from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
@@ -30,7 +30,7 @@ class AirADataJob(Job):
     random_user_landing_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
 
     superman_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
-    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
+    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
 
     url = configutil.get_config("IO_CONFIGS", "AA_RANDOM_USER_URL")
     # "https://randomuser.me/api/0.8/?results=100"
@@ -105,10 +105,10 @@ class AirADataJob(Job):
         """
         self.logger.info(f"processing api data")
         try:
-            df = self.spark.read.format("csv").option("header", "true").load(input_path + '/input_api_csv')
+            df = self.spark.read.format("csv").option("header", "true").load(input_path)
             df1 = df.select(Columns.GENDER, split("email", "@")[1].alias("email_provider"), "username")
-            df2 = df1.groupby("gender", "email_provider").agg(F.count("username"))
-            df2.coalesce(1).write().format('csv').mode('overwrite').option('header', True).option('sep', ',')\
+            df2 = df1.groupby("gender", "email_provider").agg(count("username"))
+            df2.coalesce(1).write.format('csv').mode('overwrite').option('header', True).option('sep', ',')\
                 .save(output_path + '/assessment_2_total_count')
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")

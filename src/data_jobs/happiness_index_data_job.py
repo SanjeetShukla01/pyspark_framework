@@ -50,10 +50,10 @@ class HappinessIndex(Job):
 
     def correlation_transform(self, df: DataFrame):
         self.logger.info(f"Renaming columns of Happiness Index data")
-        return df.withColumn("c_happiness_life_exp", lit(round(df.corr("happiness_rank", "health_life_expectancy"), 2))) \
+        return df\
+            .withColumn("c_happiness_life_exp", lit(round(df.corr("happiness_rank", "health_life_expectancy"), 2))) \
             .withColumn("c_happiness_generosity", lit(round(df.corr("happiness_rank", "generosity"), 2))) \
-            .withColumn("c_happiness_corruption",
-                        lit(round(df.corr("happiness_rank", "trust_government_corruption"), 2))) \
+            .withColumn("c_happiness_corruption", lit(round(df.corr("happiness_rank", "trust_government_corruption"), 2))) \
             .withColumn("c_happiness_freedom", lit(round(df.corr("happiness_rank", "freedom"), 2))) \
             .withColumn("c_happiness_economy", lit(round(df.corr("happiness_rank", "economy_gdp_per_capita"), 2)))
 
