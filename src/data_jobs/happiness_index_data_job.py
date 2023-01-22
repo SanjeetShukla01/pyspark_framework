@@ -30,8 +30,10 @@ class HappinessIndex(Job):
         df3 = self.correlation_transform(df2)
         df4 = self.generate_annotation(df3)
         df4.show()
+        self.logger.info(f"Writing processed happiness data to csv file")
         df4.coalesce(1).write.format('csv').mode('overwrite').option('header', True).option('sep', ',') \
             .save(self.happiness_data_target)
+        self.logger.info(f"Data written to path: {self.happiness_data_target}")
 
     def filter_data(self, df: DataFrame, number: int):
         self.logger.info(f"filtering dataframe to fetch {number} records")
@@ -65,6 +67,6 @@ class HappinessIndex(Job):
                              .otherwise("What are you Doing"))
 
 
-if __name__ == "__main__":
-    happiness_index_job = HappinessIndex("happiness_index_job")
-    happiness_index_job.run()
+# if __name__ == "__main__":
+#     happiness_index_job = HappinessIndex("happiness_index_job")
+#     happiness_index_job.run()
