@@ -21,7 +21,7 @@ class App:
     logger = Logger(__name__).get_logger()
     logger.info("inside app.py")
 
-    def run(self, job_name:str) -> None:
+    def run(self, job_name: str) -> None:
         self.logger.info("Run given job name")
         start = time.time()
         try:
