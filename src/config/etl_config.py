@@ -1,8 +1,8 @@
 
-aa_data_job = {
+air_asia_data_job = {
     "paths": {
-        "input_data_path": "data/source_data",
-        "output_data_path": "my/dummy/path",
+        "input_data_path": "../../data/source_data",
+        "output_data_path": "../../data/target_data",
         "landing_path": "data/source_data/aa_data/api_landing_data",
         "superman_path": "data/source_data/aa_data/superman"
     },
