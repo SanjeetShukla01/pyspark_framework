@@ -15,3 +15,39 @@ Setting up current project to the PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:/home/archana/Desktop/git-repo/pyspark_framework
 ```
 
+Creating requirements.txt file
+
+```commandline
+pip3 freeze > requirements.txt  #Python3
+```
+
+
+How to run this app from command line:
+
+```
+export PYTHONPATH=$PYTHONPATH:/Users/my-user-name/path-to-code-repo
+python3 src/app/app.py --job_name air_asia_data_job
+```
+
+
+
+### Notes:
+
+What else to do 
+1. CI-CD
+2. Secrets Manager/ Hashicorp Vault
+3. Spark Streaming
+4. Spark ML
+5. Graph Processing
+6. Python Shiny Graph
+7. Airflow DAG
+
+
+List of websites that provide Real time data.
+1. https://data.nasa.gov
+2. flight status api
+3. https://developer.accuveather.com
+4. Twitter APIs
+5. News APIs
+
+List of Streaming Data for Spark Streaming. 
