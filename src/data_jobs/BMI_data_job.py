@@ -11,7 +11,6 @@ from pyspark.sql.functions import round, when, col
 
 
 class BMIDataJob(Job):
-    # TODO: Implement this completely
     def __init__(self, job_name):
         self.job_name = job_name
         self.spark = spark_utils.SparkUtils().get_spark_session("BMI_data_job")
@@ -60,23 +59,33 @@ class BMIDataJob(Job):
         self.logger.info(f"Applying filter to the dataframe to fetch only Overweight records")
         return df.filter(col("BMI Category") == 'Overweight').count()
 
-
     def run(self):
+        """
+        Driver function to run the spark application.
+        :return:
+        """
         try:
-            self.logger.info(f"reading BMI input data json file")
-            self.aa_helper.read_json_from_web(self.json_url, self.superman_landing_path)
-            self.logger.info(f"superman.json file stored at {self.superman_landing_path}")
-            json_list = self.flatten_json(self.superman_landing_path)
-            self.process_json(json_list, self.superman_target_path)
 
-            # Read data from random user API.
-            self.logger.info(f"Reading random user data from API")
-            self.aa_helper.ingest_api_data(self.url, self.random_user_landing_path)
-            self.logger.info(f"dataset dumped on {self.random_user_landing_path}")
+            input_df = read_input_json_data(self.spark('BMI Calculator Challenge'),
+                                            read_config("Paths", "input_file_path"))
+            logger.info("dataframe from input json files created")
 
-            self.process_api_data(self.random_user_landing_path, self.random_user_target_path)
-            self.logger.info(f"placed process data at {self.random_user_target_path}")
+            bmi_df = calculate_bmi(input_df)
+            logger.info("BMI Calculated")
 
-        except Exception as exp:
-            self.logger.error(f"An error occurred while running the pipeline {str(exp)}")
-            raise
+            bmi_category_df = get_bmi_category(bmi_df)
+            logger.info("BMI Category and Health risk derived")
+
+            people_count = get_record_count(bmi_category_df)
+            logger.info("Total number of people with overweight category: {}".format(people_count))
+
+            write_csv_output(partition_folder_path(read_config("Paths", "output_file_path")), bmi_category_df)
+            logger.info("Data processing completed")
+
+        except Exception as message:
+            logger.info("Failed to process the input file")
+            logger.exception("Error in main driver function " + str(message))
+            sys.exit(400)
+
+if __name__ == "__main__":
+    run()
