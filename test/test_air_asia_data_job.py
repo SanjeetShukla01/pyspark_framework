@@ -2,7 +2,7 @@
 # ------------------------------------------------------------------------
 # Created By  :     'Sanjeet Shukla'
 # Created Date:     15/01/23 11:55 am
-# File:             test_aa_data_job.py
+# File:             test_air_asia_data_job.py
 # -----------------------------------------------------------------------
 from src.data_jobs.air_asia_data_job import AirADataJob
 from src.data_jobs.air_asia_helper import AirAHelper

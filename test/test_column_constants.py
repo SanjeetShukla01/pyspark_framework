@@ -4,8 +4,14 @@
 # Created Date:     15/01/23 10:46 pm
 # File:             test_column_constants.py
 # -----------------------------------------------------------------------
+import unittest
+
 from src.utils.column_constants import Columns
 
-if __name__ == "__main__":
-    print(Columns.CURRENT_TS)
-    print(type(Columns.CURRENT_TS))
+
+class TestColumnConstants(unittest.TestCase):
+    def test_column_constants(self):
+        col_current_ts = Columns.CURRENT_TS
+        print(col_current_ts)
+        assert col_current_ts == "current_ts"
+
