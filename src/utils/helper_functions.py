@@ -14,7 +14,8 @@ class Helper:
     logger = Logger(__name__).get_logger()
 
     @staticmethod
-    def get_nth_parent_folder(file_path, n):
+    def get_nth_parent_folder(self, file_path, n):
+        self.logger.info("")
         for i in range(n):
             file_path = os.path.dirname(file_path)
         return os.path.basename(file_path)

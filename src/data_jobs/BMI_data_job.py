@@ -4,6 +4,8 @@
 # Created Date:     16/01/23 1:09 am
 # File:             BMI_data_job.py
 # -----------------------------------------------------------------------
+import sys
+
 from src.app.job import Job
 from src.utils import spark_utils, config_utils
 from src.utils.logging_utils import Logger
@@ -17,6 +19,9 @@ class BMIDataJob(Job):
 
     logger = Logger(__name__).get_logger()
     configutil = config_utils.ConfigUtil()
+    utils = spark_utils.SparkUtils()
+    bmi_data = configutil.get_config("IO_CONFIGS", "BMI_DATA")
+    bmi_data_target = configutil.get_config("IO_CONFIGS", "BMI_DATA_TARGET")
 
     def calculate_bmi(self, df):
         """
@@ -66,26 +71,27 @@ class BMIDataJob(Job):
         """
         try:
 
-            input_df = read_input_json_data(self.spark('BMI Calculator Challenge'),
-                                            read_config("Paths", "input_file_path"))
-            logger.info("dataframe from input json files created")
+            input_df = self.utils.read_data(self.spark, self.bmi_data, "json")
+            self.logger.info(f"Created dataframe: {input_df} from input json file")
 
-            bmi_df = calculate_bmi(input_df)
-            logger.info("BMI Calculated")
+            bmi_df = self.calculate_bmi(input_df)
+            self.logger.info("Calculated BMI Based on predefined rule")
 
-            bmi_category_df = get_bmi_category(bmi_df)
-            logger.info("BMI Category and Health risk derived")
+            bmi_category_df = self.get_bmi_category(bmi_df)
+            self.logger.info("Calculated BMI Category and Health risk based on predefined rule")
 
-            people_count = get_record_count(bmi_category_df)
-            logger.info("Total number of people with overweight category: {}".format(people_count))
+            people_count = self.get_record_count(bmi_category_df)
+            self.logger.info("Total number of people in overweight category: {}".format(people_count))
 
-            write_csv_output(partition_folder_path(read_config("Paths", "output_file_path")), bmi_category_df)
-            logger.info("Data processing completed")
+            self.utils.write_data(bmi_category_df, self.bmi_data_target, "json")
+            self.logger.info("Data processing completed")
 
         except Exception as message:
-            logger.info("Failed to process the input file")
-            logger.exception("Error in main driver function " + str(message))
+            self.logger.info("Failed to process the input file")
+            self.logger.exception("Error in main driver function " + str(message))
             sys.exit(400)
 
-if __name__ == "__main__":
-    run()
+
+# if __name__ == "__main__":
+#     bmi_data_job: BMIDataJob = BMIDataJob("bmi_data_job")
+#     bmi_data_job.run()

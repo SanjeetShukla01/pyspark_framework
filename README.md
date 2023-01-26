@@ -51,3 +51,17 @@ List of websites that provide Real time data.
 5. News APIs
 
 List of Streaming Data for Spark Streaming. 
+
+
+How to enforce schema on Pyspark Job?
+https://github.com/MrPowers/quinn/blob/main/quinn/dataframe_validator.py
+https://stackoverflow.com/questions/63040466/enforcing-schema-for-pyspark-job
+
+
+How to write a single csv file without a Folder?
+https://stackoverflow.com/questions/43661660/spark-how-to-write-a-single-csv-file-without-folder/60442604#60442604
+
+
+http://ocelma.net/MusicRecommendationDataset/lastfm-1K.html
+
+Why config directory should be out of src?
