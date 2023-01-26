@@ -14,20 +14,12 @@ class TestConfigUtils(unittest.TestCase):
     configutil = config_utils.ConfigUtil(config_path)
     configutil.get_config("IO_CONFIGS", "INPUT_DATA_PATH")
 
-    def test_print_config(self):
-        # path = self.configutil.get_config("IO_CONFIGS", "INPUT_DATA_PATH")
-        if os.path.isfile(self.config_path):
-            print(self.config_path)
-        else:
-            print("Not exist")
+    def test_config_path(self):
+        assert os.path.isfile(self.config_path) is True
 
-    # def test_config_utils(self):
-    #     superman_landing_path = self.configutil.get_config("IO_CONFIGS", "AA_LANDING_PATH")
-    #     random_user_landing_path = self.configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
-    #     # assert superman_landing_path == expected_df.count()
-    #     print(superman_landing_path)
-    #     print(random_user_landing_path)
-    #
-    # def test_config_path(self):
-    #     config_path = "../config/pipeline.cfg"
-    #     print(config_path)
+    def test_config_utils(self):
+        superman_landing_path = self.configutil.get_config("IO_CONFIGS", "AA_LANDING_PATH")
+        random_user_landing_path = self.configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
+        print(os.path.abspath(superman_landing_path))
+        assert superman_landing_path == "../../data/source_data/aa_data"
+        assert random_user_landing_path == "../../data/source_data/aa_data/api_landing_path"
