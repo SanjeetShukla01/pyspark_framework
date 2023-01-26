@@ -65,3 +65,6 @@ https://stackoverflow.com/questions/43661660/spark-how-to-write-a-single-csv-fil
 http://ocelma.net/MusicRecommendationDataset/lastfm-1K.html
 
 Why config directory should be out of src?
+
+
+https://stackoverflow.com/questions/67267683/do-we-need-if-name-main-unittest-main-in-every-unit-tests-file
