@@ -32,7 +32,22 @@ python3 src/app/app.py --job_name air_asia_data_job
 In order to run the job from individual files for testing purpose. Use this path for configUtil
 `config_path: str = "../config/pipeline.cfg"`
 
+All three pipelines runs successfully
+python3 src/app/app.py --job-name happiness_index_job
+python3 src/app/app.py --job-name bmi_data_job
+python3 src/app/app.py --job-name air_asia_data_job
 
+
+
+
+
+```	
+spark-submit \
+	--jars jars/any-jar_0.1-0.1.1.jar \
+	--py-files datajob.zip \
+	src/app/app.py \
+	--job-name air_asia_data_job
+```
 
 ### Notes:
 
