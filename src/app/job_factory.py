@@ -27,9 +27,6 @@ class JobFactory:
         elif self.job_name == 'bmi_data_job':
             self.logger.info("Creating BMI Data Job")
             job = BMIDataJob(self.job_name)
-        elif self.job_name == 'wh_data_job':
-            self.logger.info("Creating WH Data Job")
-            job = WHDataJob(self.job_name)
         else:
             raise ValueError("Bad job name: {}".format(self.job_name))
         return job
