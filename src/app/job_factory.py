@@ -7,7 +7,6 @@
 from src.data_jobs.BMI_data_job import BMIDataJob
 from src.data_jobs.air_asia_data_job import AirADataJob
 from src.data_jobs.happiness_index_data_job import HappinessIndex
-from src.data_jobs.william_hills_data_job import WHDataJob
 from src.utils.logging_utils import Logger
 
 

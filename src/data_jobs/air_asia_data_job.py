@@ -115,8 +115,3 @@ class AirADataJob(Job):
             self.logger.error(f"error reading json file {str(exp)}")
             raise
 
-
-# if __name__ == "__main__":
-#     air_data_job: AirADataJob = AirADataJob("aa_data_job")
-#     air_data_job.run()
-

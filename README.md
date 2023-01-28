@@ -29,6 +29,9 @@ export PYTHONPATH=$PYTHONPATH:/Users/my-user-name/path-to-code-repo
 python3 src/app/app.py --job_name air_asia_data_job
 ```
 
+In order to run the job from individual files for testing purpose. Use this path for configUtil
+`config_path: str = "../config/pipeline.cfg"`
+
 
 
 ### Notes:
