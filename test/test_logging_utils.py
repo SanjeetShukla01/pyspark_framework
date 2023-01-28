@@ -6,9 +6,8 @@
 # -----------------------------------------------------------------------
 import os
 import unittest
-
-from src.utils import config_utils
 from src.utils.logging_utils import Logger
+
 
 class TestLoggingUtils(unittest.TestCase):
 
