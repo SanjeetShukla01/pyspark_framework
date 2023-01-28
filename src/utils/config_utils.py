@@ -5,6 +5,7 @@
 # File:             config_utils.py
 # -----------------------------------------------------------------------
 import configparser
+import os
 
 from src.utils.logging_utils import Logger
 
@@ -13,7 +14,8 @@ class ConfigUtil:
     """
     This class provides access to pipeline configs stored in pipeline.cfg
     """
-    def __init__(self, config_path: str = "../config/pipeline.cfg"):
+
+    def __init__(self, config_path: str = "src/config/pipeline.cfg"):
         self.cfg_path = config_path
 
     logger = Logger(__name__).get_logger()
