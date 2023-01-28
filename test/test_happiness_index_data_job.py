@@ -15,7 +15,7 @@ from src.utils import spark_utils, table_schema
 class TestHappinessJob(unittest.TestCase):
 
     utils = spark_utils.SparkUtils()
-    spark = utils.get_spark_session("aa_data_job")
+    spark = utils.get_spark_session("happiness_index_job")
 
     # Using hardcoded file path as config directory is inside src and relative path of data is different.
     # TODO: To move the config directory outside src.
