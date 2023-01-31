@@ -37,15 +37,32 @@ class TestAirA(unittest.TestCase):
         # aa_helper.ingest_api_data(air_data_job.url, air_data_job.random_user_target_path)
 
     def test_calculate_bmi(self):
+        """
+        TODO: Complete this test test_calculate_bmi
+        :return:
+        """
+        print(f"this is a skeleton Test")
         pass
 
     def test_get_bmi_category(self):
+        """
+        TODO: Complete this test test_get_bmi_category
+        :return:
+        """
         pass
 
     def test_get_record_count(self):
+        """
+        TODO: Complete this test test_get_record_count
+        :return:
+        """
         pass
 
     def test_run(self):
+        """
+        TODO: Complete this test test_run
+        :return:
+        """
         pass
 
 
