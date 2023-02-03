@@ -1,6 +1,10 @@
 # pyspark_framework
 
-
+This is a sample pyspark application developed following OOPS programming model and Programming Designs such as ABC, Factory and Singleton Desing Patterns. 
+The goal behind developing this application is to provide real practical exposure to Pyspark and python coding. The goal is to create it as a full pyspark application that will use following tools to run it. 
+1. Docker
+2. Airflow
+3. Kubernetes
 
 
 This repo contains more than one way to do same thing for example in order to fetch configs and Constants, 
