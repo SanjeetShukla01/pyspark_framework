@@ -91,3 +91,6 @@ Why config directory should be out of src?
 
 
 https://stackoverflow.com/questions/67267683/do-we-need-if-name-main-unittest-main-in-every-unit-tests-file
+
+
+What is decorator design pattern? Provide at least one example of Decorator Design Pattern in this code?
