@@ -1,0 +1,5 @@
+name: Build
+# Build and test on Python[3.7, 3.8, 3.9] - with coverage, checking coding standard and common security issues
+
+on:
+  workflow_dispatch

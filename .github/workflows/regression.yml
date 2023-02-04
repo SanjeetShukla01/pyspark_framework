@@ -1,0 +1,4 @@
+name: Regression_Test
+
+on:
+  workflow_dispatch
