@@ -1,6 +1,10 @@
 # pyspark_framework
 
-
+This is a sample pyspark application developed following OOPS programming model and Programming Designs such as ABC, Factory and Singleton Desing Patterns. 
+The goal behind developing this application is to provide real practical exposure to Pyspark and python coding. The goal is to create it as a full pyspark application that will use following tools to run it. 
+1. Docker
+2. Airflow
+3. Kubernetes
 
 
 This repo contains more than one way to do same thing for example in order to fetch configs and Constants, 
@@ -59,6 +63,7 @@ What else to do
 5. Graph Processing
 6. Python Shiny Graph
 7. Airflow DAG
+8. Packaging and Distribution
 
 
 List of websites that provide Real time data.
@@ -87,4 +92,9 @@ Why config directory should be out of src?
 
 https://stackoverflow.com/questions/67267683/do-we-need-if-name-main-unittest-main-in-every-unit-tests-file
 
+
 https://github.com/orgs/community/discussions/25389
+
+
+What is decorator design pattern? Provide at least one example of Decorator Design Pattern in this code?
+
