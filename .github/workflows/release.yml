@@ -1,4 +1,4 @@
-name: Build And Release
+name: Release the Latest Code
 # Build and Release a new version of Pyspark Framework
 
 on:
