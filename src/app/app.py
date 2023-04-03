@@ -27,7 +27,7 @@ class App:
         try:
             # module = importlib.import_module(f"JobFactory(job_name)")
             module = JobFactory(job_name).factory()
-            self.logger.info("job crated using job factory")
+            self.logger.info(f"{job_name} crated using job factory")
             module.run()
             end = time.time()
             self.logger.info(f"execution of job {job_name} took {end - start} seconds")
@@ -43,7 +43,7 @@ def setup_parser():
                         type=str,
                         default="air_asia_data_job",
                         # required=True,
-                        help="job name to be invoked"
+                        help="name of the job to be run"
                         )
     return parser
 
