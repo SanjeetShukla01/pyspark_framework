@@ -40,3 +40,30 @@ Here's how it works:
 - The --tc flag prints a unified diff of the changes that would be made by isort.
 - The $(PY_MODULES) variable should contain a space-separated list of Python module file paths to be checked by isort.
 So when you run make test-isort, it will execute the isort command on the specified modules, checking their import order against the specified style rules and printing a diff of any changes that would be made.
+
+
+
+```
+coverage:
+	coverage run --source=. -m unittest discover tests/
+	coverage report --fail-under=80
+	coverage html
+
+```
+The target is named coverage.
+The command to run is coverage run --source=. -m unittest discover tests/.
+The coverage command runs your unit tests with coverage measurement and produces a coverage report in a .coverage file.
+The --source=. option tells coverage to measure coverage for all files in the current directory.
+The -m flag specifies that the unittest module should be run as a module.
+The discover command finds and runs all the unit tests in the tests/ directory.
+The second command coverage report --fail-under=80 generates a coverage report in the terminal with a minimum coverage threshold of 80%.
+The third command coverage html generates a HTML report from the .coverage file.
+This assumes that you have installed the coverage package and your unit tests are located in a tests/ subdirectory of your project.
+
+You can add this target to your existing Makefile by simply appending these lines to the end of the file. Then you can run make coverage to run your unit tests with coverage measurement and produce coverage reports in both the terminal and a HTML file. The HTML report will be saved in a htmlcov/ directory.
+
+
+
+
+
+

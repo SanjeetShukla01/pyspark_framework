@@ -31,11 +31,19 @@ test-pylint:
 		-j 4 \
 		$(PY_MODULES)
 
-test-unit:
-	pytest -vvv -rf -q --cov \
-		--cov-report term \
-		$(PY_MODULES) \
-		$(PYTESTFLAGS)
+# test-unit:
+# 	pytest -vvv -rf -q --cov \
+# 		--cov-report term \
+# 		$(PY_MODULES) \
+# 		$(PYTESTFLAGS)
+
+unittest:
+	python -m unittest discover tests/
+
+coverage:
+	coverage run --source=. -m unittest discover tests/
+	coverage report --fail-under=80
+	coverage html
 
 test-isort:
 	isort -l80 -m3 -c --tc $(PY_MODULES)
@@ -52,7 +60,7 @@ isort: ## Sort imports in the python module
 #------------ PACKAGING  -------------------------------------------------------
 
 package:
-	./docker/script/package_zip.sh
+	package.sh
 
 #------------ RUN/DEBUG  -------------------------------------------------------
 run:
