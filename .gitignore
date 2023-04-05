@@ -3,4 +3,5 @@ __pycache__/
 __pypackages__/
 venv/
 logs/
-data/
+data/target_data/
+data/source_data/aa_data/

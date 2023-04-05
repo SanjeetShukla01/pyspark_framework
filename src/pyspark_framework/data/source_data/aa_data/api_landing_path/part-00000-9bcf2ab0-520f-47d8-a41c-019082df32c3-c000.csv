@@ -1,0 +1,101 @@
+email,gender,city,state,last,phone,registered,username,dob,current_ts
+alírio.lima@example.com,male,caucaia,mato grosso,lima,(23) 8264-3517,1328523005,beautifulmeercat783,401492167,2023-04-03T05:28:07.302+05:30
+orêncio.ferreira@example.com,male,caucaia,roraima,ferreira,(82) 2140-8397,1215090667,goldendog369,618001753,2023-04-03T05:28:07.302+05:30
+cirlei.ferreira@example.com,female,cubatão,pernambuco,ferreira,(39) 0963-3084,1109237097,heavybutterfly251,689368959,2023-04-03T05:28:07.302+05:30
+mar.martins@example.com,male,araraquara,ceará,martins,(33) 9045-3037,1341417896,blackelephant108,1428602117,2023-04-03T05:28:07.302+05:30
+ezequiel.pereira@example.com,male,são lourenço da mata,mato grosso,pereira,(65) 4148-9411,1088048980,lazylion346,1394387439,2023-04-03T05:28:07.302+05:30
+regino.cavalcanti@example.com,male,macaé,acre,cavalcanti,(49) 3837-3144,1164870519,beautifuldog950,1252618798,2023-04-03T05:28:07.302+05:30
+felisberta.das neves@example.com,female,votorantim,rio grande do norte,das neves,(52) 1093-5857,1106090322,tinybird697,1420738651,2023-04-03T05:28:07.302+05:30
+eloísa.caldeira@example.com,female,trindade,ceará,caldeira,(95) 5145-3474,1257629917,goldenfrog629,657187706,2023-04-03T05:28:07.302+05:30
+charlene.barbosa@example.com,female,guarapuava,paraná,barbosa,(04) 4460-9199,1104178924,bluelion517,529065823,2023-04-03T05:28:07.302+05:30
+carlos.de souza@example.com,male,bacabal,sergipe,de souza,(48) 9397-2444,1041467883,smallbutterfly388,748548437,2023-04-03T05:28:07.302+05:30
+saladino.rodrigues@example.com,male,franco da rocha,sergipe,rodrigues,(53) 2874-0926,953119822,bigduck144,147414383,2023-04-03T05:28:07.302+05:30
+cássio.araújo@example.com,male,bento gonçalves,santa catarina,araújo,(58) 1287-0076,1084742953,tinyladybug195,246066867,2023-04-03T05:28:07.302+05:30
+lurdes.de souza@example.com,female,aparecida de goiânia,sergipe,de souza,(47) 4973-7798,1290917989,goldencat263,78688219,2023-04-03T05:28:07.302+05:30
+aliciane.pereira@example.com,female,cachoeiro de itapemirim,pernambuco,pereira,(47) 8499-3985,1141940149,tinybutterfly288,1280893137,2023-04-03T05:28:07.302+05:30
+neiva.nogueira@example.com,female,natal,rio grande do norte,nogueira,(38) 8381-3378,964136595,greenpanda430,438727958,2023-04-03T05:28:07.302+05:30
+bedete.teixeira@example.com,female,ponta grossa,rio grande do sul,teixeira,(56) 3854-8303,923142315,crazygoose394,320461403,2023-04-03T05:28:07.302+05:30
+hervê.ferreira@example.com,male,aracaju,rio de janeiro,ferreira,(21) 8097-7105,1309324355,heavykoala912,763146239,2023-04-03T05:28:07.302+05:30
+taciano.campos@example.com,male,passos,bahia,campos,(16) 3047-3079,1367434800,heavybear116,324577691,2023-04-03T05:28:07.302+05:30
+altamira.castro@example.com,female,itapevi,mato grosso,castro,(59) 5453-5401,1394138999,tinycat985,1308740623,2023-04-03T05:28:07.302+05:30
+elpídio.freitas@example.com,male,nova iguaçu,rio de janeiro,freitas,(73) 2094-6487,1354070386,silverwolf505,50253594,2023-04-03T05:28:07.302+05:30
+oceano.carvalho@example.com,male,hortolândia,amapá,carvalho,(51) 7146-6055,1401685212,organicbird880,1095056262,2023-04-03T05:28:07.302+05:30
+aleu.da mata@example.com,male,itabira,maranhão,da mata,(06) 6574-4143,1285251803,blacklion444,1093425587,2023-04-03T05:28:07.302+05:30
+ariosto.moura@example.com,male,porto seguro,sergipe,moura,(29) 3242-4918,1366877962,orangegoose780,974644552,2023-04-03T05:28:07.302+05:30
+generosa.costa@example.com,female,itapipoca,maranhão,costa,(17) 9033-0510,1162422610,redbird784,886229809,2023-04-03T05:28:07.302+05:30
+ribca.da conceição@example.com,male,brasília,rondônia,da conceição,(85) 2624-6786,1072795748,smalllion353,848867672,2023-04-03T05:28:07.302+05:30
+gertrudes.pires@example.com,female,paço do lumiar,tocantins,pires,(44) 2461-7696,1141724564,smallsnake692,83236897,2023-04-03T05:28:07.302+05:30
+crispiana.da luz@example.com,female,valparaíso de goiás,maranhão,da luz,(28) 8900-6845,1204154496,purplesnake957,1184950175,2023-04-03T05:28:07.302+05:30
+porfírio.melo@example.com,male,brasília,alagoas,melo,(83) 3429-4637,1079028355,biglion186,783676422,2023-04-03T05:28:07.302+05:30
+efigênia.barbosa@example.com,female,votorantim,acre,barbosa,(35) 8318-5390,918842411,greenelephant105,281816850,2023-04-03T05:28:07.302+05:30
+bruce.silva@example.com,male,duque de caxias,mato grosso do sul,silva,(48) 7311-9699,1037911688,greenpanda155,355218359,2023-04-03T05:28:07.302+05:30
+márcia.pereira@example.com,female,petrolina,piauí,pereira,(94) 5779-1046,1312675969,purplegoose425,418248571,2023-04-03T05:28:07.302+05:30
+berta.da mata@example.com,female,camaçari,amazonas,da mata,(98) 3739-9791,916216480,purplebird862,985837675,2023-04-03T05:28:07.302+05:30
+elina.melo@example.com,female,águas lindas de goiás,maranhão,melo,(23) 3676-5656,1006265993,crazymeercat228,445002891,2023-04-03T05:28:07.302+05:30
+jesualdo.rodrigues@example.com,male,praia grande,roraima,rodrigues,(73) 5135-2796,991001560,beautifulduck158,802344787,2023-04-03T05:28:07.302+05:30
+luciane.araújo@example.com,female,taboão da serra,rondônia,araújo,(69) 4601-7599,1113691533,beautifulduck285,100006123,2023-04-03T05:28:07.302+05:30
+dino.porto@example.com,male,são leopoldo,tocantins,porto,(95) 3000-4751,979488909,tinycat326,794420759,2023-04-03T05:28:07.302+05:30
+nina.araújo@example.com,female,barreiras,rio de janeiro,araújo,(16) 0699-2836,1387005405,smallcat868,952984996,2023-04-03T05:28:07.302+05:30
+niete.novaes@example.com,male,uberlândia,mato grosso do sul,novaes,(67) 4376-6327,1047529325,bigelephant594,488502974,2023-04-03T05:28:07.302+05:30
+ieda.gomes@example.com,female,araguari,minas gerais,gomes,(18) 8939-2666,1108150131,blackbear908,1190063445,2023-04-03T05:28:07.302+05:30
+emi.costa@example.com,female,volta redonda,piauí,costa,(53) 3639-7493,1326688273,goldenkoala487,613400028,2023-04-03T05:28:07.302+05:30
+silvestre.jesus@example.com,male,ferraz de vasconcelos,amazonas,jesus,(38) 6343-5625,1318802119,smallfish752,1201966624,2023-04-03T05:28:07.302+05:30
+júnio.monteiro@example.com,male,são lourenço da mata,piauí,monteiro,(46) 6540-0822,1193013635,beautifulbutterfly375,1110436508,2023-04-03T05:28:07.302+05:30
+arnalda.aragão@example.com,female,colombo,rondônia,aragão,(81) 4562-4639,1338584576,crazypanda878,1045063216,2023-04-03T05:28:07.302+05:30
+ragendra.gonçalves@example.com,male,santos,mato grosso do sul,gonçalves,(67) 8086-7753,1289881025,ticklishbird576,1116471435,2023-04-03T05:28:07.302+05:30
+márlon.souza@example.com,male,campinas,rio grande do sul,souza,(74) 5747-1780,1287738265,whitewolf740,451498232,2023-04-03T05:28:07.302+05:30
+roberto.ramos@example.com,male,barra mansa,pernambuco,ramos,(64) 8822-4401,1068079043,whitetiger618,712882358,2023-04-03T05:28:07.302+05:30
+alvário.cardoso@example.com,male,bento gonçalves,bahia,cardoso,(17) 8085-1945,1228541296,brownwolf708,91380936,2023-04-03T05:28:07.302+05:30
+glaúcia.aragão@example.com,male,caxias do sul,espírito santo,aragão,(53) 2939-2539,1175466982,organicgorilla635,383116974,2023-04-03T05:28:07.302+05:30
+etelvira.araújo@example.com,female,aparecida de goiânia,ceará,araújo,(81) 7640-1511,1357346999,greenfrog486,1083699362,2023-04-03T05:28:07.302+05:30
+cleonei.monteiro@example.com,female,almirante tamandaré,pará,monteiro,(25) 0208-0705,1033259569,lazyladybug798,759616605,2023-04-03T05:28:07.302+05:30
+silvane.moraes@example.com,female,cotia,amapá,moraes,(65) 5345-9189,1020917910,goldentiger470,1101222188,2023-04-03T05:28:07.302+05:30
+gileade.almeida@example.com,male,teresina,paraíba,almeida,(94) 0481-7890,1226420020,tinylion934,727264572,2023-04-03T05:28:07.302+05:30
+viviana.gomes@example.com,female,angra dos reis,santa catarina,gomes,(30) 8265-6472,1066124607,silverkoala514,394329123,2023-04-03T05:28:07.302+05:30
+bendavid.lima@example.com,male,santa maria,tocantins,lima,(75) 3784-5095,1382577083,purpleostrich100,1389977397,2023-04-03T05:28:07.302+05:30
+teodoro.duarte@example.com,male,pindamonhangaba,goiás,duarte,(47) 9409-0773,928214220,orangegoose557,526197061,2023-04-03T05:28:07.302+05:30
+rita.almeida@example.com,female,anápolis,rio grande do norte,almeida,(50) 3110-2731,993476977,redbird830,932354817,2023-04-03T05:28:07.302+05:30
+jabim.alves@example.com,male,varginha,amapá,alves,(72) 4022-5708,1435449263,silvergorilla159,1162524631,2023-04-03T05:28:07.302+05:30
+eloida.castro@example.com,female,vitória,roraima,castro,(46) 6665-8983,1016042630,lazycat715,740837829,2023-04-03T05:28:07.302+05:30
+alexandre.cavalcanti@example.com,male,ji-paraná,distrito federal,cavalcanti,(09) 2607-8561,1055178438,bluewolf865,1044157426,2023-04-03T05:28:07.302+05:30
+delfino.nogueira@example.com,male,alvorada,rio grande do norte,nogueira,(51) 2702-3337,991439176,redcat611,702146816,2023-04-03T05:28:07.302+05:30
+iolene.ferreira@example.com,female,vila velha,rio de janeiro,ferreira,(34) 2975-5044,1203464723,greenpanda745,822367707,2023-04-03T05:28:07.302+05:30
+kalinka.souza@example.com,female,jandira,tocantins,souza,(57) 5594-9024,1016061494,smallpeacock426,954201309,2023-04-03T05:28:07.302+05:30
+heleno.fogaça@example.com,male,mogi guaçu,amapá,fogaça,(05) 4559-9617,1414223635,goldengoose937,1351188054,2023-04-03T05:28:07.302+05:30
+nasser.viana@example.com,male,dourados,goiás,viana,(92) 5197-5233,1015008725,silverelephant553,322442338,2023-04-03T05:28:07.302+05:30
+florestana.costa@example.com,female,camaragibe,paraná,costa,(72) 2517-5968,985059615,organicswan910,646419370,2023-04-03T05:28:07.302+05:30
+vanner.dias@example.com,female,colatina,rondônia,dias,(98) 2524-9906,1417597610,ticklishmeercat102,349823450,2023-04-03T05:28:07.302+05:30
+orandino.barbosa@example.com,male,camaragibe,rio de janeiro,barbosa,(16) 7577-8363,1265353005,bluesnake189,847744,2023-04-03T05:28:07.302+05:30
+almirodo.teixeira@example.com,male,criciúma,rondônia,teixeira,(65) 0246-6360,1151541239,browntiger309,585652123,2023-04-03T05:28:07.302+05:30
+haydée.fernandes@example.com,female,viamão,paraná,fernandes,(26) 4296-5222,1132257187,lazybear371,1241548764,2023-04-03T05:28:07.302+05:30
+juventino.da rocha@example.com,male,cachoeirinha,piauí,da rocha,(61) 6144-9702,1336822707,heavyduck777,1148543140,2023-04-03T05:28:07.302+05:30
+evandro.martins@example.com,male,são lourenço da mata,piauí,martins,(13) 2019-2370,1335314680,brownfish187,275638177,2023-04-03T05:28:07.302+05:30
+vilator.peixoto@example.com,male,aracaju,ceará,peixoto,(01) 5902-4943,1255430700,goldengoose642,593597664,2023-04-03T05:28:07.302+05:30
+rebeca.vieira@example.com,female,codó,amazonas,vieira,(89) 4386-7974,920597519,smallgoose750,314839529,2023-04-03T05:28:07.302+05:30
+urbino.da rosa@example.com,male,angra dos reis,rio grande do norte,da rosa,(30) 1758-1827,1336955567,whitepanda993,979938233,2023-04-03T05:28:07.302+05:30
+adeci.gomes@example.com,female,arapiraca,mato grosso,gomes,(50) 8050-2594,1057980484,orangeladybug686,524380103,2023-04-03T05:28:07.302+05:30
+eleutéria.da costa@example.com,female,araruama,distrito federal,da costa,(07) 0033-8479,1096901674,blackswan574,749218578,2023-04-03T05:28:07.302+05:30
+dalvânia.rocha@example.com,female,guarujá,mato grosso do sul,rocha,(32) 5949-6189,1146475145,orangeostrich684,652461822,2023-04-03T05:28:07.302+05:30
+ary.peixoto@example.com,male,itu,são paulo,peixoto,(43) 0273-6968,1063796494,brownmeercat426,83675550,2023-04-03T05:28:07.302+05:30
+arlinda.da mata@example.com,female,carapicuíba,distrito federal,da mata,(17) 3607-2487,915712363,orangelion514,33235702,2023-04-03T05:28:07.302+05:30
+aquil.pereira@example.com,male,barbacena,roraima,pereira,(82) 1534-8882,1309168496,heavysnake507,565343869,2023-04-03T05:28:07.302+05:30
+leda.oliveira@example.com,female,colatina,sergipe,oliveira,(06) 4400-5095,1320722270,blueostrich805,928411787,2023-04-03T05:28:07.302+05:30
+bóris.viana@example.com,male,crato,amazonas,viana,(61) 2261-7924,952647069,orangewolf727,1148335615,2023-04-03T05:28:07.302+05:30
+aloísio.castro@example.com,male,bragança,minas gerais,castro,(57) 9779-0923,1181882928,goldenelephant661,1298973704,2023-04-03T05:28:07.302+05:30
+maura.nunes@example.com,female,camaragibe,amapá,nunes,(67) 4480-2834,1029990263,lazyduck442,317669528,2023-04-03T05:28:07.302+05:30
+eliab.costa@example.com,male,marília,acre,costa,(36) 2945-0732,966228329,silversnake998,337478744,2023-04-03T05:28:07.302+05:30
+franco.lopes@example.com,male,itapevi,pernambuco,lopes,(89) 0065-6733,1065128294,beautifulpanda461,404869411,2023-04-03T05:28:07.302+05:30
+gino.da paz@example.com,male,pelotas,minas gerais,da paz,(99) 4326-5016,950256321,brownpanda786,885167832,2023-04-03T05:28:07.302+05:30
+vérter.pinto@example.com,male,castanhal,são paulo,pinto,(66) 0312-9495,1395654031,yellowladybug179,1267701600,2023-04-03T05:28:07.302+05:30
+getúlia.da mata@example.com,female,cuiabá,paraíba,da mata,(17) 8967-2468,1042859612,orangegoose631,865000142,2023-04-03T05:28:07.302+05:30
+ismael.monteiro@example.com,male,paulista,minas gerais,monteiro,(11) 7996-2797,1425158124,beautifulpanda428,538231329,2023-04-03T05:28:07.302+05:30
+chaiane.nogueira@example.com,female,campo largo,espírito santo,nogueira,(71) 9938-6025,1053810053,smallpanda974,1191188443,2023-04-03T05:28:07.302+05:30
+lemuel.da rosa@example.com,male,bento gonçalves,alagoas,da rosa,(58) 3419-9108,1077087214,smallgorilla286,1297861502,2023-04-03T05:28:07.302+05:30
+norberta.cavalcanti@example.com,female,coronel fabriciano,goiás,cavalcanti,(94) 5819-0170,1428692740,ticklishdog675,1129100771,2023-04-03T05:28:07.302+05:30
+aziz.caldeira@example.com,male,patos de minas,alagoas,caldeira,(26) 8939-0364,1139746506,orangelion653,378387938,2023-04-03T05:28:07.302+05:30
+firmo.costa@example.com,male,barretos,rio de janeiro,costa,(12) 0499-4350,1324740633,brownrabbit809,109601827,2023-04-03T05:28:07.302+05:30
+mauro.lima@example.com,male,porto seguro,rio grande do norte,lima,(86) 1890-9511,1347167620,greenrabbit722,852272111,2023-04-03T05:28:07.302+05:30
+carmério.cardoso@example.com,male,aparecida de goiânia,amazonas,cardoso,(02) 3374-5923,1300437827,lazypeacock283,1081252883,2023-04-03T05:28:07.302+05:30
+sereno.rodrigues@example.com,male,cabo frio,espírito santo,rodrigues,(29) 0716-1006,1015210095,lazybutterfly521,214833223,2023-04-03T05:28:07.302+05:30
+azélio.moura@example.com,male,manaus,maranhão,moura,(52) 6912-7111,1373362409,whitebird700,326910534,2023-04-03T05:28:07.302+05:30
+alívio.alves@example.com,male,eunápolis,santa catarina,alves,(30) 7336-3800,1241339867,blackbird996,1420124806,2023-04-03T05:28:07.302+05:30
