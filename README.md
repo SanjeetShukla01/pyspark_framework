@@ -25,6 +25,8 @@ Creating requirements.txt file
 pip3 freeze > requirements.txt  #Python3
 ```
 
+In order to avoid relative path issue, I have used package resources api from setuptools. 
+This change was added as part of pr 37. 
 
 How to run this app from command line:
 
@@ -42,7 +44,8 @@ python3 src/app/app.py --job-name bmi_data_job
 python3 src/app/app.py --job-name air_asia_data_job
 
 
-
+makefile vs shell script
+https://unix.stackexchange.com/questions/496793/script-or-makefile-to-automate-new-user-creation/497601#497601
 
 
 ```	
@@ -52,9 +55,6 @@ spark-submit \
 	src/app/app.py \
 	--job-name air_asia_data_job
 ```
-
-Add a feature to add pydoc documentation.
-
 
 ### Notes:
 
@@ -101,3 +101,23 @@ https://github.com/orgs/community/discussions/25389
 
 What is decorator design pattern? Provide at least one example of Decorator Design Pattern in this code?
 
+
+https://github.com/mehd-io/pyspark-boilerplate-mehdio/blob/master/docker/script/package_zip.sh
+
+
+
+## pytest -vvv -rf -q --cov --cov-report term $(PY_MODULES) $(PYTESTFLAGS)
+The pytest command runs the pytest testing framework on the specified modules.
+The -vvv flag sets the verbosity level to "very very verbose", which means that pytest will print a lot of information about each test.
+The -rf flag shows "only failed tests and any important information", suppressing the output for passing tests.
+The -q flag suppresses extra information when running tests.
+The --cov flag enables code coverage measurement with pytest-cov.
+The --cov-report term flag specifies that coverage statistics should be printed to the terminal in a simple format.
+The $(PY_MODULES) variable should contain a space-separated list of Python module file paths to be tested by pytest.
+The $(PYTESTFLAGS) variable can contain additional command-line flags and options to be passed to pytest.
+
+So when you run make test-unit, it will execute the pytest command with the specified options, running the unit tests and measuring code coverage for the specified modules.
+
+https://stackoverflow.com/questions/25436312/gitignore-not-working
+
+https://stackoverflow.com/questions/38776517/how-to-discard-local-changes-and-pull-latest-from-github-repository
