@@ -10,12 +10,13 @@ import importlib
 import os
 import sys
 import time
-
 from src.app.job_factory import JobFactory
 from src.utils.logging_utils import Logger
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+os.environ['PYSPARK_PYTHON'] = sys.executable
+os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
 
 class App:
     logger = Logger(__name__).get_logger()
