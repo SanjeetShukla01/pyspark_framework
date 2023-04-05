@@ -117,3 +117,6 @@ The $(PY_MODULES) variable should contain a space-separated list of Python modul
 The $(PYTESTFLAGS) variable can contain additional command-line flags and options to be passed to pytest.
 
 So when you run make test-unit, it will execute the pytest command with the specified options, running the unit tests and measuring code coverage for the specified modules.
+
+https://stackoverflow.com/questions/25436312/gitignore-not-working
+
