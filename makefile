@@ -65,23 +65,25 @@ run:
 	--job-name demo_job
 
 #------------ DOCKER -----------------------------------------------------------
-build-docker: ### Build the docker image
-	docker build .\
-	  -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
-	  -f docker/dev.Dockerfile
-
-test-docker:
-	docker run --rm \
-	  ${DOCKER_ARGS} \
-	  ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
-	  make test-unit
-
-run-docker:
-	docker run -it \
-	  ${DOCKER_ARGS} \
-	  ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
-	  /bin/bash -c "make package; make run"
+# build-docker: ### Build the docker image
+# 	docker build .\
+# 	  -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+# 	  -f docker/dev.Dockerfile
+#
+# test-docker:
+# 	docker run --rm \
+# 	  ${DOCKER_ARGS} \
+# 	  ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+# 	  make test-unit
+#
+# run-docker:
+# 	docker run -it \
+# 	  ${DOCKER_ARGS} \
+# 	  ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+# 	  /bin/bash -c "make package; make run"
 
 #------------ MISC -----------------------------------------------------------
 intall-py-deps:
-	poetry config virtualenvs.create false && poetry install
+	python3 -m venv venv
+	source venv/bin/activate && pip install -r requirements.txt
+	deactivate
