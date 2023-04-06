@@ -31,12 +31,6 @@ test-pylint:
 		-j 4 \
 		$(PY_MODULES)
 
-# test-unit:
-# 	pytest -vvv -rf -q --cov \
-# 		--cov-report term \
-# 		$(PY_MODULES) \
-# 		$(PYTESTFLAGS)
-
 unittest:
 	python -m unittest discover tests/
 
