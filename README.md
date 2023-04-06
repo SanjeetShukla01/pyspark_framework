@@ -121,3 +121,14 @@ So when you run make test-unit, it will execute the pytest command with the spec
 https://stackoverflow.com/questions/25436312/gitignore-not-working
 
 https://stackoverflow.com/questions/38776517/how-to-discard-local-changes-and-pull-latest-from-github-repository
+
+
+Using function as a decorator:
+Using @property decorator
+Implement @abstractmethod
+implement @staticmethod
+
+Implement ABC
+Use @dataclass(frozen = true)
+
+
