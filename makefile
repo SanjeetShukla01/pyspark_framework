@@ -11,7 +11,7 @@ DOCKER_ARGS=-v $(PWD):$(DOCKER_WORKDIR) -w $(DOCKER_WORKDIR) -u root
 # test-unit: pytest -vvv -rf -q --cov --cov-report term $(PY_MODULES) $(PYTESTFLAGS)
 
 #------------------------------------------------------------------------
-test:
+tests:
 	@$(PRE_ACTIVATE) $(MAKE) -j4 --no-print-directory \
 		test-unit \
 		test-black \
@@ -31,11 +31,11 @@ test-pylint:
 		-j 4 \
 		$(PY_MODULES)
 
-unittest:
-	python -m unittest discover tests/
+test-unit:
+	python -m unittest discover test/
 
 coverage:
-	coverage run --source=. -m unittest discover tests/
+	coverage run --source=. -m unittest discover test/
 	coverage report --fail-under=80
 	coverage html
 
@@ -57,12 +57,12 @@ package:
 	package.sh
 
 #------------ RUN/DEBUG  -------------------------------------------------------
-run:
-	spark-submit \
-	--jars jars/spark-excel_2.11-0.9.9.jar \
-	--py-files datajob.zip \
-	datajob/cli.py \
-	--job-name demo_job
+# run:
+# 	spark-submit \
+# 	--jars jars/spark-excel_2.11-0.9.9.jar \
+# 	--py-files datajob.zip \
+# 	datajob/cli.py \
+# 	--job-name demo_job
 
 #------------ DOCKER -----------------------------------------------------------
 # build-docker: ### Build the docker image
@@ -87,3 +87,8 @@ intall-py-deps:
 	python3 -m venv venv
 	source venv/bin/activate && pip install -r requirements.txt
 	deactivate
+
+#------------ CLEAN -----------------------------------------------------------
+
+clean:
+	rm -f *.o
