@@ -18,13 +18,13 @@ class JobFactory:
 
     def factory(self):
         job = None
-        if self.job_name == 'air_asia_data_job':
+        if self.job_name == "air_asia_data_job":
             self.logger.info("Creating AirAData Job")
             job = AirADataJob(self.job_name)
-        elif self.job_name == 'happiness_index_job':
+        elif self.job_name == "happiness_index_job":
             self.logger.info("Creating HappinessIndex Job")
             job = HappinessIndex(self.job_name)
-        elif self.job_name == 'bmi_data_job':
+        elif self.job_name == "bmi_data_job":
             self.logger.info("Creating BMI Data Job")
             job = BMIDataJob(self.job_name)
         else:

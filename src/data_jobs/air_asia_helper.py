@@ -8,7 +8,12 @@ import os
 import urllib.request
 
 from pyspark.sql import DataFrame
-from pyspark.sql.functions import explode, col, to_utc_timestamp, current_timestamp
+from pyspark.sql.functions import (
+    explode,
+    col,
+    to_utc_timestamp,
+    current_timestamp,
+)
 
 from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
@@ -30,31 +35,38 @@ class AirAHelper:
         """
         self.logger.info("reading random user data")
         try:
-            api_data = urllib.request.urlopen(url).read().decode('utf-8')
+            api_data = urllib.request.urlopen(url).read().decode("utf-8")
             rdd = self.spark.sparkContext.parallelize([api_data])
             df = self.spark.read.json(rdd)
 
             self.logger.info("selected columns from read dataframe")
 
-            final_df = df.select(explode(col("results")).alias("results"))\
-                .select("results.user.email",
-                        "results.user.gender",
-                        "results.user.location.city",
-                        "results.user.location.state",
-                        "results.user.name.last",
-                        "results.user.phone",
-                        "results.user.registered",
-                        "results.user.username",
-                        "results.user.dob")\
-                .withColumn(Columns.CURRENT_TS,  to_utc_timestamp(current_timestamp(), 'Asia/Kuala_Lumpur'))
+            final_df = (
+                df.select(explode(col("results")).alias("results"))
+                .select(
+                    "results.user.email",
+                    "results.user.gender",
+                    "results.user.location.city",
+                    "results.user.location.state",
+                    "results.user.name.last",
+                    "results.user.phone",
+                    "results.user.registered",
+                    "results.user.username",
+                    "results.user.dob",
+                )
+                .withColumn(
+                    Columns.CURRENT_TS,
+                    to_utc_timestamp(current_timestamp(), "Asia/Kuala_Lumpur"),
+                )
+            )
 
             # TODO: Change current_ts column to MYT timezone
             # TODO: Implement column constants
 
             self.logger.info("creating final df")
-            final_df.coalesce(1).write.format('csv').mode('overwrite')\
-                .option('header', True).option('sep', ',')\
-                .save(landing_path)
+            final_df.coalesce(1).write.format("csv").mode("overwrite").option(
+                "header", True
+            ).option("sep", ",").save(landing_path)
 
         except Exception as exp:
             self.logger.error(f"error in reading api data {str(exp)}")
@@ -76,7 +88,3 @@ class AirAHelper:
         os.makedirs(os.path.dirname(file_name), exist_ok=True)
         with open(file_name, "wb") as file:
             file.write(js)
-
-
-
-

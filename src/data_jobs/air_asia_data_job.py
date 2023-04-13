@@ -26,11 +26,17 @@ class AirADataJob(Job):
 
     logger = Logger(__name__).get_logger()
     configutil = config_utils.ConfigUtil()
-    superman_landing_path = configutil.get_config("IO_CONFIGS", "AA_LANDING_PATH")
-    random_user_landing_path = configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
+    superman_landing_path = configutil.get_config(
+        "IO_CONFIGS", "AA_LANDING_PATH"
+    )
+    random_user_landing_path = configutil.get_config(
+        "IO_CONFIGS", "AA_API_LANDING_PATH"
+    )
 
     superman_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
-    random_user_target_path = configutil.get_config("IO_CONFIGS", "AA_TARGET_PATH")
+    random_user_target_path = configutil.get_config(
+        "IO_CONFIGS", "AA_TARGET_PATH"
+    )
 
     url = configutil.get_config("IO_CONFIGS", "AA_RANDOM_USER_URL")
     # "https://randomuser.me/api/0.8/?results=100"
@@ -47,21 +53,35 @@ class AirADataJob(Job):
 
             # Read the nested json file from url and process it.
             self.logger.info(f"reading superman.json file from web")
-            self.aa_helper.read_json_from_web(self.json_url, self.superman_landing_path)
-            self.logger.info(f"superman.json file stored at {self.superman_landing_path}")
+            self.aa_helper.read_json_from_web(
+                self.json_url, self.superman_landing_path
+            )
+            self.logger.info(
+                f"superman.json file stored at {self.superman_landing_path}"
+            )
             json_list = self.flatten_json(self.superman_landing_path)
             self.process_json(json_list, self.superman_target_path)
 
             # Read data from random user API.
             self.logger.info(f"Reading random user data from API")
-            self.aa_helper.ingest_api_data(self.url, self.random_user_landing_path)
-            self.logger.info(f"dataset dumped on {self.random_user_landing_path}")
+            self.aa_helper.ingest_api_data(
+                self.url, self.random_user_landing_path
+            )
+            self.logger.info(
+                f"dataset dumped on {self.random_user_landing_path}"
+            )
 
-            self.process_api_data(self.random_user_landing_path, self.random_user_target_path)
-            self.logger.info(f"placed process data at {self.random_user_target_path}")
+            self.process_api_data(
+                self.random_user_landing_path, self.random_user_target_path
+            )
+            self.logger.info(
+                f"placed process data at {self.random_user_target_path}"
+            )
 
         except Exception as exp:
-            self.logger.error(f"An error occurred while running the pipeline {str(exp)}")
+            self.logger.error(
+                f"An error occurred while running the pipeline {str(exp)}"
+            )
             raise
 
     def flatten_json(self, path: str) -> list:
@@ -71,8 +91,8 @@ class AirADataJob(Job):
         :return:            returns flattened json list
         """
         self.logger.info(f"flattening json data")
-        with open(path + '/superman.json', encoding='utf-8') as f:
-            r = re.split('(\{.*?\})(?= *\{)', f.read())
+        with open(path + "/superman.json", encoding="utf-8") as f:
+            r = re.split("(\{.*?\})(?= *\{)", f.read())
         event_list = []
         for ele in r:
             each = ele.splitlines()
@@ -91,9 +111,9 @@ class AirADataJob(Job):
         try:
             filename = path + "/superman_final.json"
             os.makedirs(os.path.dirname(filename), exist_ok=True)
-            with open(filename, 'w', encoding='utf-8') as f:
+            with open(filename, "w", encoding="utf-8") as f:
                 for d in unique:
-                    f.write(d + '\n')
+                    f.write(d + "\n")
             self.logger.info("superman_final.json has been created")
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")
@@ -105,11 +125,20 @@ class AirADataJob(Job):
         """
         self.logger.info(f"processing api data")
         try:
-            df = self.spark.read.format("csv").option("header", "true").load(input_path)
-            df1 = df.select(Columns.GENDER, split("email", "@")[1].alias("email_provider"), "username")
+            df = (
+                self.spark.read.format("csv")
+                .option("header", "true")
+                .load(input_path)
+            )
+            df1 = df.select(
+                Columns.GENDER,
+                split("email", "@")[1].alias("email_provider"),
+                "username",
+            )
             df2 = df1.groupby("gender", "email_provider").agg(count("username"))
-            df2.coalesce(1).write.format('csv').mode('overwrite').option('header', True).option('sep', ',')\
-                .save(output_path + '/assessment_2_total_count')
+            df2.coalesce(1).write.format("csv").mode("overwrite").option(
+                "header", True
+            ).option("sep", ",").save(output_path + "/assessment_2_total_count")
         except IOError as exp:
             self.logger.error(f"error reading json file {str(exp)}")
             raise

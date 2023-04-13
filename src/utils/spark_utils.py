@@ -17,14 +17,26 @@ class SparkUtils:
         :return:            Returns SparkSession
         """
         try:
-            spark_session = SparkSession.builder.appName(app_name).enableHiveSupport().getOrCreate()
+            spark_session = (
+                SparkSession.builder.appName(app_name)
+                .enableHiveSupport()
+                .getOrCreate()
+            )
             return spark_session
         except Exception as error_message:
             self.logger.info(" Failed to create sparkSession")
-            self.logger.exception("Error in getting sparkSession" + str(error_message))
+            self.logger.exception(
+                "Error in getting sparkSession" + str(error_message)
+            )
             sys.exit(400)
 
-    def read_data(self, spark, folder_path: str, file_format: str, schema: StructType = None) -> DataFrame:
+    def read_data(
+        self,
+        spark,
+        folder_path: str,
+        file_format: str,
+        schema: StructType = None,
+    ) -> DataFrame:
         """
         This function reads data stored in flat files in either json or csv format and return a data frame
         :param spark:           spark session object
@@ -36,14 +48,25 @@ class SparkUtils:
         # TODO: Test this function for Parquet, Avro, XML and other formats.
         if schema:
             self.logger.info(f"reading {file_format} data")
-            data_frame = spark.read.format(file_format).option("header", "true") \
-                .option("inferSchema", "true").schema(schema).load(folder_path)
+            data_frame = (
+                spark.read.format(file_format)
+                .option("header", "true")
+                .option("inferSchema", "true")
+                .schema(schema)
+                .load(folder_path)
+            )
         else:
-            data_frame = spark.read.format(file_format).option("header", "true") \
-                .option("inferSchema", "true").load(folder_path)
+            data_frame = (
+                spark.read.format(file_format)
+                .option("header", "true")
+                .option("inferSchema", "true")
+                .load(folder_path)
+            )
         return data_frame
 
-    def write_data(self, df: DataFrame, folder_path: str, file_format: str) -> None:
+    def write_data(
+        self, df: DataFrame, folder_path: str, file_format: str
+    ) -> None:
         """
         This function writes data stored in flat files in either json or csv format and returns a data frame
         :param df:              Dataframe to be written
@@ -53,8 +76,8 @@ class SparkUtils:
         """
         # TODO: Test this function for Parquet, Avro and other formats.
         self.logger.info(f"reading {file_format} data")
-        df.write.format("json").mode("overwrite")\
-            .option("parquet.bloom.filter.enabled#favorite_color", "true")\
-            .save(folder_path)
+        df.write.format("json").mode("overwrite").option(
+            "parquet.bloom.filter.enabled#favorite_color", "true"
+        ).save(folder_path)
         self.logger.info(f"Printing dataframe after writing to disk")
         df.show()

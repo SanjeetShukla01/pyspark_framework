@@ -10,7 +10,6 @@ from src.utils.logging_utils import Logger
 
 
 class TestLoggingUtils(unittest.TestCase):
-
     def test_log_path(self):
         logger = Logger("test")
         log_path = logger.LOG_DIRECTORY
@@ -33,5 +32,5 @@ class TestLoggingUtils(unittest.TestCase):
         """
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

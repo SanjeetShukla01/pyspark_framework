@@ -64,6 +64,3 @@ class TestAirA(unittest.TestCase):
         :return:
         """
         pass
-
-
-

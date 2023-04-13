@@ -15,7 +15,10 @@ class ConfigUtil:
     """
     This class provides access to pipeline configs stored in pipeline.cfg
     """
-    config_str = resource_string(__name__, "../config/pipeline.cfg").decode('utf-8')
+
+    config_str = resource_string(__name__, "../config/pipeline.cfg").decode(
+        "utf-8"
+    )
 
     def __init__(self, config_str: str = config_str):
         self.cfg_str = config_str

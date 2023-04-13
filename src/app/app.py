@@ -15,8 +15,9 @@ from src.utils.logging_utils import Logger
 
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-os.environ['PYSPARK_PYTHON'] = sys.executable
-os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
+os.environ["PYSPARK_PYTHON"] = sys.executable
+os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+
 
 class App:
     logger = Logger(__name__).get_logger()
@@ -31,21 +32,29 @@ class App:
             self.logger.info(f"{job_name} crated using job factory")
             module.run()
             end = time.time()
-            self.logger.info(f"execution of job {job_name} took {end - start} seconds")
+            self.logger.info(
+                f"execution of job {job_name} took {end - start} seconds"
+            )
         except Exception as ex:
-            self.logger.info(str(datetime.datetime.now()) + "________Abruptly Exited__________")
-            raise Exception(f"Execution of job: {job_name} failed with msg {ex}")
+            self.logger.info(
+                str(datetime.datetime.now())
+                + "________Abruptly Exited__________"
+            )
+            raise Exception(
+                f"Execution of job: {job_name} failed with msg {ex}"
+            )
 
 
 def setup_parser():
     parser = argparse.ArgumentParser(description="args for pyspark app")
-    parser.add_argument('--job-name',
-                        nargs='?',
-                        type=str,
-                        default="air_asia_data_job",
-                        # required=True,
-                        help="name of the job to be run"
-                        )
+    parser.add_argument(
+        "--job-name",
+        nargs="?",
+        type=str,
+        default="air_asia_data_job",
+        # required=True,
+        help="name of the job to be run",
+    )
     return parser
 
 
@@ -54,5 +63,3 @@ if __name__ == "__main__":
     args = arg_parser.parse_args()
     app = App()
     app.run(args.job_name)
-
-
