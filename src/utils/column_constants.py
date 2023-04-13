@@ -1,4 +1,3 @@
-
 class Columns:
     CURRENT_TS = "current_ts"
     REGION = "region"

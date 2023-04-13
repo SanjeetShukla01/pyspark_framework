@@ -27,7 +27,14 @@ class Helper:
         :param file_path:           path of the output file
         :return:                    returns actual partitioned path to store output data to
         """
-        file_path = file_path + '/' + str(datetime.datetime.today().year) + '/' \
-                    + str(datetime.datetime.today().month) + '/' + str(datetime.datetime.today().day)
+        file_path = (
+            file_path
+            + "/"
+            + str(datetime.datetime.today().year)
+            + "/"
+            + str(datetime.datetime.today().month)
+            + "/"
+            + str(datetime.datetime.today().day)
+        )
         self.logger.info(f"file_path: {file_path}")
         return file_path

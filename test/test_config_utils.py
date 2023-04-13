@@ -18,8 +18,15 @@ class TestConfigUtils(unittest.TestCase):
         assert os.path.isfile(self.config_path) is True
 
     def test_config_utils(self):
-        superman_landing_path = self.configutil.get_config("IO_CONFIGS", "AA_LANDING_PATH")
-        random_user_landing_path = self.configutil.get_config("IO_CONFIGS", "AA_API_LANDING_PATH")
+        superman_landing_path = self.configutil.get_config(
+            "IO_CONFIGS", "AA_LANDING_PATH"
+        )
+        random_user_landing_path = self.configutil.get_config(
+            "IO_CONFIGS", "AA_API_LANDING_PATH"
+        )
         print(os.path.abspath(superman_landing_path))
         assert superman_landing_path == "../../data/source_data/aa_data"
-        assert random_user_landing_path == "../../data/source_data/aa_data/api_landing_path"
+        assert (
+            random_user_landing_path
+            == "../../data/source_data/aa_data/api_landing_path"
+        )

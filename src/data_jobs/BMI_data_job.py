@@ -30,8 +30,10 @@ class BMIDataJob(Job):
         :return: dataframe with height in meters,BMI value added to the input dataframe
         """
         self.logger.info(f"calculating Height in Meter and BMI")
-        return df.withColumn('HeightM', df.HeightCm / 100).withColumn('BMI', round(
-            df.WeightKg / ((df.HeightCm / 100) * (df.HeightCm / 100)), 2))
+        return df.withColumn("HeightM", df.HeightCm / 100).withColumn(
+            "BMI",
+            round(df.WeightKg / ((df.HeightCm / 100) * (df.HeightCm / 100)), 2),
+        )
 
     def get_bmi_category(self, df):
         """
@@ -40,20 +42,25 @@ class BMIDataJob(Job):
         :return: Dataframe with  BMI category and Health risk derived from their respective BMI values
         """
         self.logger.info(f"Creating new column BMI Category")
-        return df.withColumn('BMI Category', when(df.BMI <= 18.4, "Underweight")
-                             .when((df.BMI >= 18.5) & (df.BMI <= 24.9), "Normal weight")
-                             .when((df.BMI >= 25) & (df.BMI <= 29.9), "Overweight")
-                             .when((df.BMI >= 30) & (df.BMI <= 34.9), "Moderately obese")
-                             .when((df.BMI >= 35) & (df.BMI <= 39.9), "Severely obese")
-                             .when((df.BMI >= 40), "Very severely obese")
-                             .otherwise('Undefined')) \
-            .withColumn('Health risk', when(df.BMI <= 18.4, "Malnutrition risk")
-                        .when((df.BMI >= 18.5) & (df.BMI <= 24.9), "Low risk")
-                        .when((df.BMI >= 25) & (df.BMI <= 29.9), "Enhanced risk")
-                        .when((df.BMI >= 30) & (df.BMI <= 34.9), "Medium risk")
-                        .when((df.BMI >= 35) & (df.BMI <= 39.9), "High risk")
-                        .when((df.BMI >= 40), "Very high risk")
-                        .otherwise('Undefined'))
+        return df.withColumn(
+            "BMI Category",
+            when(df.BMI <= 18.4, "Underweight")
+            .when((df.BMI >= 18.5) & (df.BMI <= 24.9), "Normal weight")
+            .when((df.BMI >= 25) & (df.BMI <= 29.9), "Overweight")
+            .when((df.BMI >= 30) & (df.BMI <= 34.9), "Moderately obese")
+            .when((df.BMI >= 35) & (df.BMI <= 39.9), "Severely obese")
+            .when((df.BMI >= 40), "Very severely obese")
+            .otherwise("Undefined"),
+        ).withColumn(
+            "Health risk",
+            when(df.BMI <= 18.4, "Malnutrition risk")
+            .when((df.BMI >= 18.5) & (df.BMI <= 24.9), "Low risk")
+            .when((df.BMI >= 25) & (df.BMI <= 29.9), "Enhanced risk")
+            .when((df.BMI >= 30) & (df.BMI <= 34.9), "Medium risk")
+            .when((df.BMI >= 35) & (df.BMI <= 39.9), "High risk")
+            .when((df.BMI >= 40), "Very high risk")
+            .otherwise("Undefined"),
+        )
 
     def get_record_count(self, df):
         """
@@ -61,8 +68,10 @@ class BMIDataJob(Job):
         :param df: dataframe with BMI value and their respective BMI categories
         :return: Count of records of people with BMI category as 'Overweight'
         """
-        self.logger.info(f"Applying filter to the dataframe to fetch only Overweight records")
-        return df.filter(col("BMI Category") == 'Overweight').count()
+        self.logger.info(
+            f"Applying filter to the dataframe to fetch only Overweight records"
+        )
+        return df.filter(col("BMI Category") == "Overweight").count()
 
     def run(self):
         """
@@ -70,25 +79,34 @@ class BMIDataJob(Job):
         :return:
         """
         try:
-
             input_df = self.utils.read_data(self.spark, self.bmi_data, "json")
-            self.logger.info(f"Created dataframe: {input_df} from input json file")
+            self.logger.info(
+                f"Created dataframe: {input_df} from input json file"
+            )
 
             bmi_df = self.calculate_bmi(input_df)
             self.logger.info("Calculated BMI Based on predefined rule")
 
             bmi_category_df = self.get_bmi_category(bmi_df)
-            self.logger.info("Calculated BMI Category and Health risk based on predefined rule")
+            self.logger.info(
+                "Calculated BMI Category and Health risk based on predefined rule"
+            )
 
             people_count = self.get_record_count(bmi_category_df)
-            self.logger.info("Total number of people in overweight category: {}".format(people_count))
+            self.logger.info(
+                "Total number of people in overweight category: {}".format(
+                    people_count
+                )
+            )
 
             self.utils.write_data(bmi_category_df, self.bmi_data_target, "json")
             self.logger.info("Data processing completed")
 
         except Exception as message:
             self.logger.info("Failed to process the input file")
-            self.logger.exception("Error in main driver function " + str(message))
+            self.logger.exception(
+                "Error in main driver function " + str(message)
+            )
             sys.exit(400)
 
 

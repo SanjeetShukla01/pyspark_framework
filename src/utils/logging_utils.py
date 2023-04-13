@@ -17,6 +17,7 @@ class SingletonDoubleChecked(object):
     In python 2x having object in class definition means new style class.
     In python 3x this is not needed.
     """
+
     __singleton_lock = threading.Lock()
     __singleton_instance = None
 
@@ -39,11 +40,16 @@ class Logger(SingletonDoubleChecked):
         logs older than current_date-days_to_keep will be erased
         :param      logger_name:    Name of the logger to give context of the class where log is generated
         """
-        self.FORMATTER = logging.Formatter('[%(levelname)s] - %(asctime)-15s (%(relativepath)s:%(lineno)d): %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
-        self.LOG_DIRECTORY = os.path.join(os.path.dirname(__file__), '../../logs/')
+        self.FORMATTER = logging.Formatter(
+            "[%(levelname)s] - %(asctime)-15s (%(relativepath)s:%(lineno)d): %(message)s",
+            datefmt="%m/%d/%Y %I:%M:%S %p",
+        )
+        self.LOG_DIRECTORY = os.path.join(
+            os.path.dirname(__file__), "../../logs/"
+        )
         if not os.path.exists(self.LOG_DIRECTORY):
             os.mkdir(self.LOG_DIRECTORY)
-        self.FILE_NAME = datetime.now().strftime('log_%d-%m-%Y-%H:%M:%S.log')
+        self.FILE_NAME = datetime.now().strftime("log_%d-%m-%Y-%H:%M:%S.log")
         self.LOG_FILE = self.LOG_DIRECTORY + self.FILE_NAME
         self.logger_name = logger_name
         # self.__clean_old_logs()
@@ -64,7 +70,9 @@ class Logger(SingletonDoubleChecked):
         """
         file_handler = logging.FileHandler(self.LOG_FILE)
         file_handler.setFormatter(self.FORMATTER)
-        file_handler.addFilter(PackagePathFilter())  # this adds relative path to the handler
+        file_handler.addFilter(
+            PackagePathFilter()
+        )  # this adds relative path to the handler
         return file_handler
 
     def get_logger(self) -> logging.Logger:
@@ -86,10 +94,14 @@ class Logger(SingletonDoubleChecked):
     def __get_old_logs(self):
         logs = [name for name in self.__get_file_names()]
         logs.sort(reverse=True)
-        return logs[self.LOGS_COUNT:]
+        return logs[self.LOGS_COUNT :]
 
     def __get_file_names(self):
-        return [item.name for item in pathlib.Path(self.LOG_DIRECTORY).glob("*") if item.is_file()]
+        return [
+            item.name
+            for item in pathlib.Path(self.LOG_DIRECTORY).glob("*")
+            if item.is_file()
+        ]
 
     @staticmethod
     def __delete_files(self, path):
@@ -103,6 +115,7 @@ class PackagePathFilter(logging.Filter):
     """
     This class is used to add relative path to the logs
     """
+
     def filter(self, record: logging.LogRecord) -> bool:
         """
         this method is used to filter log records and make the path relative in log records
@@ -121,8 +134,6 @@ class PackagePathFilter(logging.Filter):
         return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logger: Logger = Logger("test")
     path = os.path.abspath(logger.LOG_DIRECTORY)
-
-

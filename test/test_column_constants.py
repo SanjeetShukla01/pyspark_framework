@@ -14,4 +14,3 @@ class TestColumnConstants(unittest.TestCase):
         col_current_ts = Columns.CURRENT_TS
         print(col_current_ts)
         assert col_current_ts == "current_ts"
-
