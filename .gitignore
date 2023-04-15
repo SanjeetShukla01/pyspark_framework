@@ -5,3 +5,4 @@ venv/
 logs/
 data/target_data/
 data/source_data/aa_data
+target/

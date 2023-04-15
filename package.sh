@@ -3,7 +3,7 @@ source respect.sh
 # Package pyspark etl application and its python dependencies into a `pyspark_etl_job.zip` folder
 
 zip_file="to_upload"
-mkdir $zip_file
+mkdir $zip_file target
 cp README.md $zip_file/
 
 respect.message.green "==============================================================="
@@ -33,7 +33,7 @@ unzip -q "dist/spark_etl-$version.zip"
 cd "spark_etl-$version" || exit
 # Small hack so that main package (src) can be added to python path
 touch __init__.py
-zip -q -r "../../spark_etl.zip" *
+zip -q -r "../../target/spark_etl.zip" *
 cd ../../
 rm -r $zip_file
 pwd
