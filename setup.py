@@ -11,7 +11,7 @@ setup(
     version="0.0.1",
     author="Sanjeet Shukla",
     author_email="sanjeet.shukla089@gmail.com",
-    packages=find_packages(include=["src"], exclude=["test"]),
+    packages=find_packages(exclude=["test"]),
     description="A pyspark boilerplate with Object Oriented Design",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -24,8 +24,7 @@ setup(
             "app=app:app",
         ],
     },
-    # setup_requires=['pytest-runner'],
-    # tests_require=['pytest==4.4.1'],
+    package_data={".":["*.py"]},
     test_suite='tests',
     project_urls={
         "Bug Reports": "https://github.com/SanjeetShukla01/pyspark_framework/issues",
