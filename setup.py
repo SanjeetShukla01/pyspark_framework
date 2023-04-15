@@ -7,11 +7,11 @@ with open(f"{here}/README.md", "r") as readme_file:
     long_description = readme_file.read()
 
 setup(
-    name="pyspark_framework",
+    name="spark_etl",
     version="0.0.1",
     author="Sanjeet Shukla",
     author_email="sanjeet.shukla089@gmail.com",
-    packages=find_packages(include=['package_name']),
+    packages=find_packages(include=["src"], exclude=["test"]),
     description="A pyspark boilerplate with Object Oriented Design",
     long_description=long_description,
     long_description_content_type="text/markdown",
