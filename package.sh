@@ -32,7 +32,7 @@ pwd
 unzip -q "dist/spark_etl-$version.zip"
 cd "spark_etl-$version" || exit
 # Small hack so that main package (src) can be added to python path
-touch __init__.py
+#touch __init__.py
 zip -q -r "../../target/spark_etl.zip" *
 cd ../../
 rm -r $zip_file

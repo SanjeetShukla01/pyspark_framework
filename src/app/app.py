@@ -6,7 +6,6 @@
 # -----------------------------------------------------------------------
 import argparse
 import datetime
-import importlib
 import os
 import sys
 import time
@@ -15,13 +14,16 @@ from src.utils.logging_utils import Logger
 
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-os.environ["PYSPARK_PYTHON"] = sys.executable
-os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+# os.environ["PYSPARK_PYTHON"] = sys.executable
+# os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
 
 
 class App:
     logger = Logger(__name__).get_logger()
     logger.info("inside app.py")
+
+    # TODO: Implement Decorator Timing Function.
+    # https://towardsdatascience.com/python-decorators-for-data-science-6913f717669a
 
     def run(self, job_name: str) -> None:
         self.logger.info("Run given job name")
