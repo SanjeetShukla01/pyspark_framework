@@ -7,7 +7,8 @@
 import sys
 
 from src.app.job import Job
-from src.utils import spark_utils, config_utils
+from src.utils import spark_utils
+from src.config import config_utils
 from src.utils.logging_utils import Logger
 from pyspark.sql.functions import round, when, col
 

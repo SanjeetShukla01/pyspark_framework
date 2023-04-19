@@ -7,13 +7,12 @@
 import os
 import re
 
-from pyspark import F
 from pyspark.sql.functions import split, count
 
 from src.app.job import Job
-from src.config import etl_config
+from src.config import etl_config, config_utils
 from src.data_jobs.air_asia_helper import AirAHelper
-from src.utils import spark_utils, config_utils
+from src.utils import spark_utils
 from src.utils.column_constants import Columns
 from src.utils.logging_utils import Logger
 

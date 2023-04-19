@@ -6,7 +6,8 @@
 # -----------------------------------------------------------------------
 import unittest
 
-from src.utils import spark_utils, config_utils, table_schema
+from src.utils import spark_utils
+from src.config import config_utils
 
 
 class TestBMIJob(unittest.TestCase):
