@@ -6,9 +6,8 @@
 # -----------------------------------------------------------------------
 import unittest
 
-from src.data_jobs.air_asia_data_job import AirADataJob
-from src.data_jobs.air_asia_helper import AirAHelper
-from src.utils import spark_utils, config_utils
+from src.utils import spark_utils
+from src.config import config_utils
 
 
 class TestAirA(unittest.TestCase):

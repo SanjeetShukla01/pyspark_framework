@@ -57,12 +57,18 @@ package:
 	./package.sh
 
 #------------ RUN/DEBUG  -------------------------------------------------------
-run:
+run-package:
 	spark-submit \
 	--jars jars/spark-excel_2.11-0.9.9.jar \
 	--py-files target/spark_etl.zip \
 	src/app/app.py \
 	--job-name air_asia_data_job
+
+
+#------------ RUN/DEBUG  -------------------------------------------------------
+run-code:
+	#export PYTHONPATH=/home/archana/Desktop/git-repo/pyspark_framework
+	spark-submit src/app/app.py --job-name air_asia_data_job
 
 #------------ DOCKER -----------------------------------------------------------
 # build-docker: ### Build the docker image

@@ -6,7 +6,7 @@
 # -----------------------------------------------------------------------
 import os
 import unittest
-from src.utils import config_utils
+from src.config import config_utils
 
 
 class TestConfigUtils(unittest.TestCase):
