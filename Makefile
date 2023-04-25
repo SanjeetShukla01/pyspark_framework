@@ -67,26 +67,26 @@ run-package:
 
 #------------ RUN/DEBUG  -------------------------------------------------------
 run-code:
-	#export PYTHONPATH=/home/archana/Desktop/git-repo/pyspark_framework
+	export PYTHONPATH=/home/archana/Desktop/git-repo/pyspark_framework
 	spark-submit src/app/app.py --job-name air_asia_data_job
 
 #------------ DOCKER -----------------------------------------------------------
-# build-docker: ### Build the docker image
-# 	docker build .\
-# 	  -t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
-# 	  -f docker/dev.Dockerfile
-#
-# test-docker:
-# 	docker run --rm \
-# 	  ${DOCKER_ARGS} \
-# 	  ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
-# 	  make test-unit
-#
-# run-docker:
-# 	docker run -it \
-# 	  ${DOCKER_ARGS} \
-# 	  ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
-# 	  /bin/bash -c "make package; make run"
+build-docker: ### Build the docker image
+	docker build .\
+ 	-t ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+ 	-f docker/dev.Dockerfile
+
+test-docker:
+	docker run --rm \
+ 	${DOCKER_ARGS} \
+ 	${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+ 	make test-unit
+
+run-docker:
+	docker run -it \
+ 	${DOCKER_ARGS} \
+ 	${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} \
+ 	/bin/bash -c "make package; make run-"
 
 #------------ MISC -----------------------------------------------------------
 intall-py-deps:
