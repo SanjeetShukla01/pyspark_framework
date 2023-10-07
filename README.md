@@ -56,6 +56,14 @@ spark-submit \
 	--job-name air_asia_data_job
 ```
 
+While running spark-submit in spark jupyter docker container. I was getting error:
+Jupyter command `file/path` not found
+Below stackoverflow article answers this problem. That has to do with  PYSPARK_DRIVER_PYTHON=jupyter
+Which should be set to PYSPARK_DRIVER_PYTHON=python. 
+
+https://stackoverflow.com/questions/54797832/why-does-spark-submit-fail-with-error-executing-jupyter-command
+
+
 ### Notes:
 
 What else to do 
